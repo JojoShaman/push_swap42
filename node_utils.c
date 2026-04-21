@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                       :::      ::::::::    */
+/*   node_utils.c                                      :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:09:35 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/21 14:13:17 by srosu           ###   ########.fr        */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	link_node(t_list *node, t_list *node2)
+{
+	node->next = node2;
+	node2->prev = node;
+}
+
+t_list	*new_node(int content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(*new));
+	if (!new)
+		return (NULL);
+	new->value = content;
+	new->prev = NULL;
+	new->next = NULL;
+	return (new);
+}
