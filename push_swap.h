@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 17:22:08 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/28 00:48:55 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
-# include "printf/ft_printf.h"
+# include "headers/ft_printf.h"
 
 typedef struct s_list
 {
@@ -37,6 +37,7 @@ typedef struct s_data
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	t_stack	tmp;
 }	t_data;
 
 t_data	*create_stack_a(const char *str);
@@ -49,7 +50,10 @@ void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
 void	update_position(t_stack *stack);
 void	tiny_sort(t_stack *stack);
-int		find_biggest(t_list *node);
+int		is_biggest(t_list *node);
 size_t	ft_strlen(const char *str);
+int		count_nb(const char *str);
+void	ft_lstclear(t_stack *stack);
+char	*ft_strjoin(char *dst, const char *src);
 
 #endif

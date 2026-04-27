@@ -6,72 +6,101 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 18:42:43 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/28 00:50:33 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*str_join(char *dst, const char *src)
+int	is_valid(int c)
 {
-	char	*copy;
-	char	*ptr;
-	int		i;
-	int		j;
+	return ((c >= '0' && c <= '9') || (c == ' '));
+}
+
+int	check_argv(char *str)
+{
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!dst)
-		dst = "";
-	if (!src)
-		src = "";
-	copy = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(*copy));
-	if (!copy)
-		return (NULL);
-	ptr = copy;
-	while (dst[i])
+	if (!str[0])
+		return (0);
+	while (str[i])
 	{
-		copy[i] = dst[i];
+		if (!is_valid(str[i]))
+			return (0);
 		i++;
 	}
-	while (src[j])
+	return (1);
+}
+
+int	error(int fd)
+{
+	write(fd, "Error\n", 6);
+	return (1);
+}
+
+float	compute_disorder(t_stack *stack)
+{
+	int		mistakes;
+	int		total_pairs;
+	t_list	*track;
+	int		i;
+
+	mistakes = 0;
+	total_pairs = 0;
+	track = stack->head;
+	while (track)
 	{
-		copy[i + j] = src[j];
-		j++;
+		if (track->next && track->value > track->next->value)
+			mistakes += 1;
+		track = track->next;
+		total_pairs += 1;
 	}
-	copy[i + j] = '\0';
-	return (ptr);
+	printf("total_p: %d, mistakes: %d\n", total_pairs, mistakes);
+	return ((float) mistakes / total_pairs);
 }
 
 int	main(int argc, char **argv)
 {
 	int		i;
+	int		j;
 	t_data	*stack;
 	char	*str;
 	char	*tmp;
 
 	i = 1;
+	j = 0;
 	str = NULL;
 	tmp = NULL;
 	if (argc < 2)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (error(2));
 	if (argc == 2)
-		stack = create_stack_a(argv[i]);
+	{
+		if (!check_argv(argv[i]))
+			return (error(2));
+		if (count_nb(argv[i]) > 1)
+			stack = create_stack_a(argv[i]);
+		else
+			return (error(2));
+	}
 	else if (argc > 2)
 	{
 		while (i < argc)
 		{
+			if (!check_argv(argv[i]))
+			{
+				if (str)
+					free(str);
+				return (error(2));
+			}
 			tmp = str;
-			str = str_join(tmp, argv[i]);
+			str = ft_strjoin(tmp, argv[i]);
 			if (tmp)
 				free(tmp);
 			if (i != argc - 1)
 			{
 				tmp = str;
-				str = str_join(tmp, " ");
+				str = ft_strjoin(tmp, " ");
 				free(tmp);
 			}
 			i++;
@@ -80,11 +109,11 @@ int	main(int argc, char **argv)
 	}
 	if (str)
 		free(str);
-	// ft_printf("** stack a **\n");
-	// print_stack(&stack->stack_a);
-	tiny_sort(&stack->stack_a);
-	// ft_printf("\n--------------------------\n\n");
-	// ft_printf("** stack a **\n");
-	// print_stack(&stack->stack_a);
+	if (stack)
+	{
+		printf("%f\n-----------------------\n", compute_disorder(&stack->stack_a));
+		print_stack(&stack->stack_a);
+		ft_lstclear(&stack->stack_a);
+	}
 	return (0);
 }

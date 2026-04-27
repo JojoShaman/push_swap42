@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   tiny_sort.c                                       :+:      :+:    :+:    */
+/*   ft_strjoin.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 15:42:40 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/28 00:04:54 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/27 21:25:40 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/27 21:25:42 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tiny_sort(t_stack *stack)
+char	*ft_strjoin(char *dst, const char *src)
 {
-	if (is_biggest(stack->head))
+	char	*copy;
+	char	*ptr;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!dst)
+		dst = "";
+	if (!src)
+		src = "";
+	copy = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(*copy));
+	if (!copy)
+		return (NULL);
+	ptr = copy;
+	while (dst[i])
 	{
-		rotate(stack);
-		ft_printf("ra\n");
+		copy[i] = dst[i];
+		i++;
 	}
-	else if (is_biggest(stack->head->next))
+	while (src[j])
 	{
-		reverse_rotate(stack);
-		ft_printf("rra\n");
+		copy[i + j] = src[j];
+		j++;
 	}
-	if (stack->head->value > stack->head->next->value)
-	{
-		swap(stack);
-		ft_printf("sa\n");
-	}
+	copy[i + j] = '\0';
+	return (ptr);
 }

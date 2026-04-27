@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 17:22:00 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/27 20:16:12 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,29 +72,6 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	substring[i] = '\0';
 	return (substring);
-}
-
-static int	count_nb(const char *str)
-{
-	int	i;
-	int	nb;
-	int	in_nb;
-
-	i = 0;
-	nb = 0;
-	in_nb = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ' && !in_nb)
-		{
-			in_nb = 1;
-			nb++;
-		}
-		if (str[i] == ' ' && in_nb)
-			in_nb = 0;
-		i++;
-	}
-	return (nb);
 }
 
 static int	word_len(char const *s, int start, char c)
