@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:35 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/21 14:13:17 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/27 18:49:53 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ t_list	*new_node(int content)
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
+}
+
+int	find_biggest(t_list *node)
+{
+	t_list	*find;
+	t_list	*tmp;
+
+	tmp = node;
+	find = node->next;
+	while (find && tmp->value > find->value)
+		find = find->next;
+	if (find == NULL)
+		return (1);
+	return (0);
 }

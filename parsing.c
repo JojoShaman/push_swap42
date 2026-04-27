@@ -6,13 +6,13 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/21 14:13:19 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/27 17:22:00 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
