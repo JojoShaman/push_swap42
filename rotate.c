@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_putstr_fd.c                                    :+:      :+:    :+:    */
+/*   rotate.c                                          :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/07 15:53:46 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/16 15:19:18 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/27 15:27:31 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/27 15:27:31 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-void	ft_putstr_fd(char *s, int fd, int *count)
+void	rotate(t_stack *stack)
 {
-	while (*s)
-	{
-		write(fd, s, 1);
-		++(*count);
-		s++;
-	}
+	t_list	*tmp;
+
+	if (!stack->head)
+		return ;
+	tmp = stack->head;
+	stack->head = stack->head->next;
+	stack->tail->next = tmp;
+	stack->tail = tmp;
+	tmp->next = NULL;
+	update_position(stack);
 }

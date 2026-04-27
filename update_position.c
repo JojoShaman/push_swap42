@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_putnbr_unsigned_fd.c                           :+:      :+:    :+:    */
+/*   update_position.c                                 :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: srosu <sorinrosu45@gmail.com>             #+#  +:+       +#+         */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/08 16:59:26 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/08 18:21:03 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/27 15:25:51 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/27 15:25:51 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-void	ft_putnbr_unsigned_fd(unsigned int n, int fd, int *count)
+void	update_position(t_stack *stack)
 {
-	char	c;
+	t_list	*current;
+	int		i;
 
-	if (n >= 10)
+	current = stack->head;
+	i = 0;
+	while (current)
 	{
-		ft_putnbr_unsigned_fd((n / 10), fd, count);
+		current->current_position = i;
+		current = current->next;
+		i++;
 	}
-	c = (n % 10) + '0';
-	write(fd, &c, 1);
-	++(*count);
 }

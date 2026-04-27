@@ -130,6 +130,7 @@ t_data	*create_stack_a(const char *str)
 			break ;
 		substr = ft_substr(str, start, word_len(str, start, ' '));
 		node = new_node(ft_atoi(substr));
+		node->current_position = i;
 		if (i == 0)
 		{
 			stack->stack_a.head = node;

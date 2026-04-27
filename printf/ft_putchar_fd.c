@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   ft_putchar_fd.c                                   :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: srosu <sorinrosu45@gmail.com>             #+#  +:+       +#+         */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/07 15:28:12 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/08 18:21:43 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/24 15:40:34 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putchar_fd(int c, int fd, int *count)
 {
-	write(fd, &c, 1);
+	unsigned char	a;
+
+	a = (unsigned char) c;
+	write(fd, &a, 1);
 	++(*count);
 }

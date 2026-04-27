@@ -19,7 +19,7 @@ void	print_stack(t_stack *stack)
 	track = stack->head;
 	while (track)
 	{
-		ft_printf("%d\n", track->value);
+		ft_printf("[%d] %d\n", track->current_position, track->value);
 		track = track->next;
 	}
 }

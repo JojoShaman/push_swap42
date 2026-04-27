@@ -22,9 +22,13 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack = create_stack_a(argv[1]);
+	printf("** stack a **\n");
 	print_stack(&stack->stack_a);
 	ft_printf("\n--------------------------\n\n");
-	swap(&stack->stack_a);
+	push(&stack->stack_b, &stack->stack_a);
+	printf("** stack a **\n");
 	print_stack(&stack->stack_a);
+	printf("** stack b **\n");
+	print_stack(&stack->stack_b);
 	return (0);
 }

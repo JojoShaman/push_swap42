@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/21 14:13:13 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/27 15:29:02 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_list
 {
 	int				value;
+	int				current_position;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
@@ -43,5 +44,9 @@ t_list	*new_node(int content);
 void	link_node(t_list *node, t_list *node2);
 void	print_stack(t_stack *stack);
 void	swap(t_stack *stack);
+void	push(t_stack *dst, t_stack *src);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
+void	update_position(t_stack *stack);
 
 #endif

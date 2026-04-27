@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   rules.c                                           :+:      :+:    :+:    */
+/*   swap.c                                            :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:18 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/21 14:13:11 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/27 15:26:42 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/27 15:27:16 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,5 @@ void	swap(t_stack *stack)
 		else
 			first_element->next = NULL;
 	}
-}
-
-void	push(t_data *stack)
-{
-	t_list	*head_a;
-	t_list	*head_b;
-	t_list	*tail_a;
-	t_list	*tail_b;
-
-	head_a = stack->stack_a.head;
-	head_b = stack->stack_b.head;
+	update_position(stack);
 }
