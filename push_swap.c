@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/28 00:50:33 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/28 19:08:05 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	main(int argc, char **argv)
 	int		i;
 	int		j;
 	t_data	*stack;
+	t_list	*biggest;
+	t_list	*smallest;
 	char	*str;
 	char	*tmp;
 
@@ -112,7 +114,17 @@ int	main(int argc, char **argv)
 	if (stack)
 	{
 		printf("%f\n-----------------------\n", compute_disorder(&stack->stack_a));
-		print_stack(&stack->stack_a);
+		// push(&stack->stack_b, &stack->stack_a);
+		// push(&stack->stack_b, &stack->stack_a);
+		// push(&stack->stack_b, &stack->stack_a);
+		// tiny_sort_b(&stack->stack_b);
+		sort(&stack->stack_a, &stack->stack_b);
+		b_target(&stack->stack_a, &stack->stack_b);
+		print_stack(&stack->stack_a, 1);
+		printf("\n-----------------------\n");
+		print_stack(&stack->stack_b, 0);
+		// printf("\n-----------------------\n");
+		// print_stack(&stack->stack_b);
 		ft_lstclear(&stack->stack_a);
 	}
 	return (0);
