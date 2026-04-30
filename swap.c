@@ -6,18 +6,23 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 15:27:16 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 17:06:52 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack *stack, int check)
 {
 	t_list	*first_element;
 	t_list	*second_element;
 	t_list	*third_element;
+	char	c;
 
+	if (check)
+		c = 'a';
+	else
+		c = 'b';
 	third_element = NULL;
 	if (stack->head && stack->head->next)
 	{
@@ -37,5 +42,6 @@ void	swap(t_stack *stack)
 		else
 			first_element->next = NULL;
 	}
+	ft_printf("s%c ", c);
 	update_position(stack);
 }
