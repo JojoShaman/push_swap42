@@ -6,13 +6,13 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:42:40 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 17:04:40 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 21:56:44 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tiny_sort_a(t_stack *stack)
+void	tiny_sort_a(t_stack *stack, int check)
 {
 	t_list	*biggest;
 
@@ -25,7 +25,7 @@ void	tiny_sort_a(t_stack *stack)
 		swap(stack, 1);
 }
 
-void	tiny_sort_b(t_stack *stack)
+void	tiny_sort_b(t_stack *stack, int check)
 {
 	t_list	*smallest;
 

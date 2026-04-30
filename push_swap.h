@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 17:00:05 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 21:55:36 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	push(t_stack *dst, t_stack *src, int check);
 void	rotate(t_stack *stack, int check);
 void	reverse_rotate(t_stack *stack, int check);
 void	update_position(t_stack *stack);
-void	tiny_sort_a(t_stack *stack);
-void	tiny_sort_b(t_stack *stack);
+void	tiny_sort_a(t_stack *stack, int check);
+void	tiny_sort_b(t_stack *stack, int check);
 t_list	*find_biggest(t_stack *stack);
 t_list	*find_smallest(t_stack *stack);
 size_t	ft_strlen(const char *str);

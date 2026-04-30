@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:31 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 17:06:21 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 22:00:29 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	rotate(t_stack *stack, int check)
 		stack->tail = tmp;
 		tmp->next = NULL;
 	}
-	ft_printf("r%c ", c);
+	ft_printf("r%c\n", c);
 	update_position(stack);
 }

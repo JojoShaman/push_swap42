@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/28 16:51:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 18:01:44 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 22:27:11 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ void	find_cheap(t_stack *stack1, t_stack *stack2, int check)
 {
 	t_list	*cheapest;
 	t_list	*track;
-	char	c;
 
 	cheapest = stack1->head;
 	track = stack1->head->next;
@@ -214,28 +213,39 @@ void	sort(t_stack *a, t_stack *b)
 
 	j = 1;
 	i = 0;
+	if (a->tail->current_position < 3)
+	{
+		tiny_sort_a(a, 1);
+		return ;
+	}
 	while (1)
 	{
 		if (j <= 3)
 			push(b, a, 0);
 		if (j == 3)
 		{
-			tiny_sort_b(b);
+			tiny_sort_b(b, 0);
 			break ;
 		}
 		update_info(a, b);
 		j++;
 	}
-	while (a->tail->current_position != 2)
+	while (a->tail->current_position > 2)
 	{
 		update_info(a, b);
-		find_cheap(a, b, 1);
+		find_cheap(a, b, 0);
 	}
-	tiny_sort_a(a);
+	if (a->tail->current_position == 3)
+		tiny_sort_a(a, 1);
+	else if (a->tail->current_position == 2)
+	{
+		if (a->head->value > a->head->next->value || a->head->value < a->head->next->value)
+			swap(a, 1);
+	}
 	update_info(a, b);
 	while (b->head->next)
 	{
-		find_cheap(b, a, 0);
+		find_cheap(b, a, 1);
 		update_info(a, b);
 	}
 	push(a, b, 1);

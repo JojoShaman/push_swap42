@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 17:06:52 by srosu           ###   ########.fr        */
+/*   Updated: 2026/04/30 22:00:35 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	swap(t_stack *stack, int check)
 		else
 			first_element->next = NULL;
 	}
-	ft_printf("s%c ", c);
+	ft_printf("s%c\n", c);
 	update_position(stack);
 }
