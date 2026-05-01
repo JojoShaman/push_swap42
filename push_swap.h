@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 11:46:27 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/01 18:56:39 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ void	sort(t_stack *a, t_stack *b);
 void	above_median(t_stack *a, t_stack *b);
 void	get_cost(t_stack *stack, t_stack *stack2);
 void	update_info(t_stack *a, t_stack *b);
-
+int		is_valid(int c);
+int		check_argv(char *str);
+int		error(int fd);
+float	compute_disorder(t_stack *stack);
 #endif
