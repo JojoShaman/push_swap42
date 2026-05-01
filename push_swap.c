@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 16:15:26 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/01 15:23:42 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ int	main(int argc, char **argv)
 		// push(&stack->stack_b, &stack->stack_a);
 		// tiny_sort_b(&stack->stack_b);
 		sort(&stack->stack_a, &stack->stack_b);
-		print_stack(&stack->stack_a);
-		printf("\n-----------------------\n");
-		print_stack(&stack->stack_b);
+		//print_stack(&stack->stack_a);
+		//printf("\n-----------------------\n");
+		//print_stack(&stack->stack_b);
 		// printf("\n-----------------------\n");
 		// print_stack(&stack->stack_b);
 		//ft_lstclear(&stack->stack_a);

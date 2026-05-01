@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/28 16:51:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 22:27:11 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/01 15:27:21 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	above_median(t_stack *a, t_stack *b)
 	t_list	*track_a;
 	t_list	*track_b;
 
+	if (!a || !a->head)
+		return ;
 	lst_size_a = a->tail->current_position;
 	track_a = a->head;
 	track_b = NULL;
@@ -54,7 +56,7 @@ void	b_target(t_stack *a, t_stack *b)
 	int		diff;
 	int		best_diff;
 
-	if (!b || !b->head)
+	if ((!a || !a->head) || (!b || !b->head))
 		return ;
 	a_track = a->head;
 	while (a_track)
@@ -90,7 +92,7 @@ void	a_target(t_stack *b, t_stack *a)
 	int		diff;
 	int		best_diff;
 
-	if (!a || !a->head)
+	if ((!a || !a->head) || (!b || !b->head))
 		return ;
 	b_track = b->head;
 	while (b_track)
@@ -125,6 +127,8 @@ void	get_cost(t_stack *stack, t_stack *stack2)
 	int		lst_size2;
 	int		cost;
 
+	if ((!stack || !stack->head) || (!stack2 || !stack2->head))
+		return ;
 	track = stack->head;
 	lst_size = stack->tail->current_position;
 	lst_size2 = stack2->tail->current_position;
@@ -150,49 +154,70 @@ void	get_cost(t_stack *stack, t_stack *stack2)
 	}
 }
 
-void	find_cheap(t_stack *stack1, t_stack *stack2, int check)
+void	find_cheap(t_stack *stack1, t_stack *stack2, int check1, int check2)
 {
 	t_list	*cheapest;
 	t_list	*track;
 
 	cheapest = stack1->head;
 	track = stack1->head->next;
-	while (track && track->next)
+	if (!track)
+	{
+		while (stack1->head->target_node->current_position > 0)
+		{
+			if (stack1->head->target_node->above_median)
+				rotate(stack2, check2);
+			else
+				reverse_rotate(stack2, check2);
+			above_median(stack2, stack2);
+		}
+		push(stack2, stack1, check2);
+		return ;
+	}
+	while (track)
 	{
 		if (cheapest->cost < track->cost)
 			track = track->next;
-		else
+		else if (cheapest->cost > track->cost)
 		{
 			cheapest = track;
 			track = track->next;
 		}
+		else if (cheapest->cost == track->cost)
+			track = track->next;
 	}
-	if (cheapest->cost == 0)
-		push(stack2, stack1, check);
+	//printf("\n[cheapest: %d], [target: %d]\n", cheapest->current_position, cheapest->target_node->current_position);
+	if (cheapest->current_position == 0 && cheapest->target_node->current_position == 0)
+	{
+		push(stack2, stack1, check2);
+		return ;
+	}
 	else
 	{
 		if (cheapest->above_median && cheapest->target_node->above_median)
 		{
-			if (cheapest->current_position == cheapest->target_node->current_position)
-				rotate(stack1, check);
-			else if (cheapest->current_position == 0 && cheapest->target_node->current_position != 0)
-				rotate(stack2, check);
-			else if (cheapest->current_position != 0 && cheapest->target_node->current_position == 0)
-				rotate(stack1, check);
+			if (cheapest->current_position && cheapest->target_node->current_position)
+				rotate_both(stack1, stack2);
+			else if (!cheapest->current_position && cheapest->target_node->current_position)
+				rotate(stack2, check2);
+			else if (cheapest->current_position && !cheapest->target_node->current_position)
+				rotate(stack1, check1);
 		}
-		else if (cheapest->above_median && !cheapest->target_node->above_median)
-		{
-			if (cheapest->current_position == 0)
-				reverse_rotate(stack2, check);
-			else if (cheapest->target_node->current_position == 0)
-				rotate(stack1, check);
-		}
+		else if (!cheapest->above_median && !cheapest->target_node->above_median)
+			reverse_rotate_both(stack1, stack2);
 		else if (!cheapest->above_median && cheapest->target_node->above_median)
 		{
 			if (cheapest->target_node->current_position == 0)
-				reverse_rotate(stack1, check);
-			else if (cheapest->current_position == 0)
-				rotate(stack2, check);
+				reverse_rotate(stack1, check1);
+			else
+				rotate(stack2, check2);
+		}
+		else if (cheapest->above_median && !cheapest->target_node->above_median)
+		{
+			if (cheapest->current_position != 0)
+				rotate(stack1, check1);
+			else
+				reverse_rotate(stack2, check2);
 		}
 	}
 }
@@ -200,8 +225,8 @@ void	find_cheap(t_stack *stack1, t_stack *stack2, int check)
 void	update_info(t_stack *a, t_stack *b)
 {
 	above_median(a, b);
-	b_target(a, b);
 	a_target(b, a);
+	b_target(a, b);
 	get_cost(a, b);
 	get_cost(b, a);
 }
@@ -218,6 +243,9 @@ void	sort(t_stack *a, t_stack *b)
 		tiny_sort_a(a, 1);
 		return ;
 	}
+	// push(b, a, 0);
+	// update_info(a, b);
+	// printf("test");
 	while (1)
 	{
 		if (j <= 3)
@@ -233,22 +261,20 @@ void	sort(t_stack *a, t_stack *b)
 	while (a->tail->current_position > 2)
 	{
 		update_info(a, b);
-		find_cheap(a, b, 0);
+		find_cheap(a, b, 1, 0);
 	}
-	if (a->tail->current_position == 3)
+	if (a->tail->current_position == 2)
 		tiny_sort_a(a, 1);
-	else if (a->tail->current_position == 2)
+	else if (a->tail->current_position < 2)
 	{
-		if (a->head->value > a->head->next->value || a->head->value < a->head->next->value)
+		if (a->head->value > a->head->next->value)
 			swap(a, 1);
 	}
-	update_info(a, b);
-	while (b->head->next)
+	while (b->head)
 	{
-		find_cheap(b, a, 1);
+		find_cheap(b, a, 0, 1);
 		update_info(a, b);
 	}
-	push(a, b, 1);
 	while (1)
 	{
 		if (!find_smallest(a)->above_median)

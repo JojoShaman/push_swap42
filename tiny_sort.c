@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:42:40 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 21:56:44 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/01 10:59:29 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	tiny_sort_a(t_stack *stack, int check)
 
 	biggest = find_biggest(stack);
 	if (stack->head->value == biggest->value)
-		rotate(stack, 1);
+		rotate(stack, check);
 	else if (stack->head->next->value == biggest->value)
-		reverse_rotate(stack, 1);
+		reverse_rotate(stack, check);
 	if (stack->head->value > stack->head->next->value)
-		swap(stack, 1);
+		swap(stack, check);
 }
 
 void	tiny_sort_b(t_stack *stack, int check)
@@ -31,9 +31,9 @@ void	tiny_sort_b(t_stack *stack, int check)
 
 	smallest = find_smallest(stack);
 	if (stack->head->value == smallest->value)
-		rotate(stack, 0);
+		rotate(stack, check);
 	else if (stack->head->next->value == smallest->value)
-		reverse_rotate(stack, 0);
+		reverse_rotate(stack, check);
 	if (stack->head->value < stack->head->next->value)
-		swap(stack, 0);
+		swap(stack, check);
 }

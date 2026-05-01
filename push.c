@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:22 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 22:02:56 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/01 12:31:36 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	push(t_stack *dst, t_stack *src, int check)
 	if (dst->head)
 		dst->head->prev = tmp;
 	dst->head = tmp;
+	dst->head->prev = NULL;
 	if (!dst->tail)
 		dst->tail = tmp;
 	ft_printf("p%c\n", c);
