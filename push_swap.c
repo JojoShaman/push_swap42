@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 19:34:35 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 00:48:21 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 		sort(&stack->stack_a, &stack->stack_b);
 		ft_lstclear(&stack->stack_a);
 		ft_lstclear(&stack->stack_b);
+		free(stack);
 	}
 	return (0);
 }

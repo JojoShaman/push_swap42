@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:35 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/28 18:57:44 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 00:24:34 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ t_list	*new_node(int content)
 	if (!new)
 		return (NULL);
 	new->value = content;
+	new->above_median = 0;
+	new->cost = 0;
+	new->current_position = 0;
+	new->target_node = NULL;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);

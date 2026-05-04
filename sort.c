@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/28 16:51:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 15:27:21 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 00:52:52 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,6 @@ void	find_cheap(t_stack *stack1, t_stack *stack2, int check1, int check2)
 		else if (cheapest->cost == track->cost)
 			track = track->next;
 	}
-	//printf("\n[cheapest: %d], [target: %d]\n", cheapest->current_position, cheapest->target_node->current_position);
 	if (cheapest->current_position == 0 && cheapest->target_node->current_position == 0)
 	{
 		push(stack2, stack1, check2);
@@ -243,9 +242,6 @@ void	sort(t_stack *a, t_stack *b)
 		tiny_sort_a(a, 1);
 		return ;
 	}
-	// push(b, a, 0);
-	// update_info(a, b);
-	// printf("test");
 	while (1)
 	{
 		if (j <= 3)

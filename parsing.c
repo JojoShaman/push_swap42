@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 20:16:12 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 00:48:09 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ t_data	*create_stack_a(const char *str)
 		return (NULL);
 	stack->stack_a.head = NULL;
 	stack->stack_a.tail = NULL;
+	stack->stack_b.head = NULL;
+	stack->stack_b.tail = NULL;
 	while (str[start])
 	{
 		while (str[start] == ' ')
@@ -107,6 +109,13 @@ t_data	*create_stack_a(const char *str)
 			break ;
 		substr = ft_substr(str, start, word_len(str, start, ' '));
 		node = new_node(ft_atoi(substr));
+		if (!node)
+		{
+			ft_lstclear(&stack->stack_a);
+			free(substr);
+			free(stack);
+			return (NULL);
+		}
 		node->current_position = i;
 		if (i == 0)
 		{
