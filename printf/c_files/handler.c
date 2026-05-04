@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   type_is.c                                         :+:      :+:    :+:    */
+/*   handler.c                                         :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/08 17:06:23 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/24 16:18:28 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 00:49:46 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	check_ptr_p(unsigned long p, int *count)
 	}
 }
 
-void	type_is(char c, va_list *ap, int *count)
+void	type_is(char c, va_list * ap, int *count)
 {
 	unsigned long	arg;
 
