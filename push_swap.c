@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 00:48:21 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 19:25:27 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 int	main(int argc, char **argv)
 {
 	int		i;
+	int		j;
 	t_data	*stack;
 	t_list	*biggest;
 	t_list	*smallest;
+	int		*tab;
 	char	*str;
 	char	*tmp;
 
 	i = 1;
+	j = 0;
 	str = NULL;
 	tmp = NULL;
 	if (argc < 2)
@@ -68,8 +71,16 @@ int	main(int argc, char **argv)
 		free(str);
 	if (stack)
 	{
-		//printf("%f\n-----------------------\n", compute_disorder(&stack->stack_a));
-		sort(&stack->stack_a, &stack->stack_b);
+		tab = copy_into_array(&stack->stack_a);
+		if (tab)
+		{
+			while (j < stack->stack_a.tail->current_position + 1)
+			{
+				ft_printf("%d\n", tab[j]);
+				j++;
+			}
+			free(tab);
+		}
 		ft_lstclear(&stack->stack_a);
 		ft_lstclear(&stack->stack_b);
 		free(stack);

@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 18:55:04 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 19:26:23 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ int		is_valid(int c);
 int		check_argv(char *str);
 int		error(int fd);
 float	compute_disorder(t_stack *stack);
+int		*copy_into_array(t_stack *a);
+
 #endif
