@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 20:15:54 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/27 20:15:54 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 18:39:42 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	count_nb(const char *str)
 {
