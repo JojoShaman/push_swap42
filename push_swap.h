@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 18:42:56 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 18:55:04 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_list	*find_smallest(t_stack *stack);
 size_t	ft_strlen(const char *str);
 int		count_nb(const char *str);
 int		ft_atoi(const char *nptr);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_lstclear(t_stack *stack);
 char	*ft_strjoin(char *dst, const char *src);
 void	b_target(t_stack *a, t_stack *b);
