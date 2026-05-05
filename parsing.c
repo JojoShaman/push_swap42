@@ -6,37 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 18:33:34 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 18:47:01 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_atoi(const char *nptr)
-{
-	size_t	i;
-	int		sign;
-	int		nb;
-
-	i = 0;
-	sign = 1;
-	nb = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		nb *= 10;
-		nb += (nptr[i] - '0');
-		i++;
-	}
-	return (nb * sign);
-}
 
 static char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
