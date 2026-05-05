@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:40 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 15:12:09 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 19:03:05 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	print_stack(t_stack *stack)
 {
