@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   radix_sort.c                                      :+:      :+:    :+:    */
+/*   replace_value.c                                   :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/05 17:59:48 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 23:23:01 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/05 23:24:20 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/05 23:24:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack *a, t_stack *b, int *count)
+void	replace_value(int *tab, t_stack *a, int size)
 {
-	int	bits;
-	int	i;
-	int	j;
-	int	size;
+	int		i;
+	t_list	*track;
 
-	bits = bits_count(find_biggest(a)->value);
 	i = 0;
-	size = find_biggest(a)->value + 1;
-	while (i < bits)
+	while (i < size)
 	{
-		j = 0;
-		while (j < size && a->head)
+		track = a->head;
+		while (track)
 		{
-			if (((a->head->value >> i) & 1) == 0)
+			if (tab[i] == track->value)
 			{
-				push(b, a, 0);
-				(*count)++;
+				track->value = i;
+				break ;
 			}
-			else
-			{
-				rotate(a, 1);
-				(*count)++;
-			}
-			j++;
-		}
-		while (b->head)
-		{
-			push(a, b, 1);
-			(*count)++;
+			track = track->next;
 		}
 		i++;
 	}

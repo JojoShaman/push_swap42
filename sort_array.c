@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   radix_sort.c                                      :+:      :+:    :+:    */
+/*   sort_array.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/05 17:59:48 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 23:23:01 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/05 23:24:54 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/05 23:24:54 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack *a, t_stack *b, int *count)
+void	sort_array(int *tab, int size)
 {
-	int	bits;
+	int	tmp;
+	int	swapped;
 	int	i;
-	int	j;
-	int	size;
 
-	bits = bits_count(find_biggest(a)->value);
-	i = 0;
-	size = find_biggest(a)->value + 1;
-	while (i < bits)
+	tmp = 0;
+	swapped = 1;
+	while (swapped)
 	{
-		j = 0;
-		while (j < size && a->head)
+		swapped = 0;
+		i = 0;
+		while (i < size - 1)
 		{
-			if (((a->head->value >> i) & 1) == 0)
+			if (tab[i] > tab[i + 1])
 			{
-				push(b, a, 0);
-				(*count)++;
+				tmp = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = tmp;
+				swapped = 1;
 			}
-			else
-			{
-				rotate(a, 1);
-				(*count)++;
-			}
-			j++;
+			i++;
 		}
-		while (b->head)
-		{
-			push(a, b, 1);
-			(*count)++;
-		}
-		i++;
 	}
 }

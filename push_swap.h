@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 19:26:23 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/05 23:24:27 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ int		check_argv(char *str);
 int		error(int fd);
 float	compute_disorder(t_stack *stack);
 int		*copy_into_array(t_stack *a);
+void	radix_sort(t_stack *a, t_stack *b, int *count);
+int		bits_count(int max);
+void	replace_value(int *tab, t_stack *a, int size);
 
 #endif
