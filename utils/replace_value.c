@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/05 23:24:20 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 23:24:20 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 void	replace_value(int *tab, t_stack *a, int size)
 {

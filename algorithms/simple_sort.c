@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 01:02:25 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:29:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 static void	sort_three(t_stack *a, int *count)
 {

@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/01 18:53:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 19:25:04 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../headers/push_swap.h"
 
 int	is_valid(int c)
 {

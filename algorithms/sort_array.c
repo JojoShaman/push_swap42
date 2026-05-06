@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/05 23:24:54 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 23:24:54 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:29:15 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 void	sort_array(int *tab, int size)
 {

@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/05 17:59:48 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:06:57 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:29:30 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 void	radix_sort(t_stack *a, t_stack *b, int *count)
 {

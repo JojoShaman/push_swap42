@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/28 14:34:25 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/30 17:55:51 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 t_list	*find_biggest(t_stack *stack)
 {

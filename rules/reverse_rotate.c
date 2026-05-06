@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 01:43:02 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 void	reverse_rotate(t_stack *stack, char c, int *count)
 {

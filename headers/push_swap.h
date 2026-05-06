@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 02:23:53 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:26:33 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
-# include "headers/ft_printf.h"
+# include "ft_printf.h"
 
 typedef struct s_list
 {
