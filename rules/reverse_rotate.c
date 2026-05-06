@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 00:09:52 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	reverse_rotate(t_stack *stack, char c, int *count)
 		stack->opp->rra++;
 	else
 		stack->opp->rrb++;
-	ft_printf("rr%c\n", c);
+	if (!stack->bool->bench_mode)
+		ft_printf(1, "rr%c\n", c);
 }
 
 void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count)
@@ -58,5 +59,6 @@ void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count)
 	stack2->head->prev = NULL;
 	(*count)++;
 	stack->opp->rrr++;
-	ft_printf("rrr\n");
+	if (!stack->bool->bench_mode)
+		ft_printf(1, "rrr\n");
 }
