@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/05 17:59:48 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 00:58:45 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 12:06:57 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	radix_sort(t_stack *a, t_stack *b, int *count)
 			j++;
 		}
 		while (b->head)
-			push(a, b, 'b', count);
+			push(a, b, 'a', count);
 		i++;
 	}
 }
