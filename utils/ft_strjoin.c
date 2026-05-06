@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_strjoin.c                                      :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 21:25:40 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 19:25:09 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 21:25:40 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/06 04:30:18 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 char	*ft_strjoin(char *dst, const char *src)
 {
-	char	*copy;
-	char	*ptr;
+	char	*str;
 	int		i;
 	int		j;
 
@@ -25,20 +24,19 @@ char	*ft_strjoin(char *dst, const char *src)
 		dst = "";
 	if (!src)
 		src = "";
-	copy = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(*copy));
-	if (!copy)
+	str = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(*str));
+	if (!str)
 		return (NULL);
-	ptr = copy;
 	while (dst[i])
 	{
-		copy[i] = dst[i];
+		str[i] = dst[i];
 		i++;
 	}
 	while (src[j])
 	{
-		copy[i + j] = src[j];
+		str[i + j] = src[j];
 		j++;
 	}
-	copy[i + j] = '\0';
-	return (ptr);
+	str[i + j] = '\0';
+	return (str);
 }
