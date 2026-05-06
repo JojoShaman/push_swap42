@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:09:39 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/06 17:05:21 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   parsing.c                                         :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/06 23:39:48 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	create_node(t_data *stack, char *substr, int i)
 
 static t_data	*construct_stack_a(const char *str, t_data *stack)
 {
-	int 	start;
+	int		start;
 	char	*substr;
 	int		i;
 	int		temp;
@@ -74,7 +74,12 @@ t_data	*create_stack_a(const char *str)
 	stack->stack_a.tail = NULL;
 	stack->stack_b.head = NULL;
 	stack->stack_b.tail = NULL;
+	stack->big_o.strategy = "";
 	memset(&stack->opp, 0, sizeof(stack->opp));
+	memset(&stack->flags, 0, sizeof(stack->flags));
+	//remplacer memset par ft_memset
+	stack->stack_a.bool = &stack->flags;
+	stack->stack_b.bool = &stack->flags;
 	stack->stack_a.opp = &stack->opp;
 	stack->stack_b.opp = &stack->opp;
 	return (construct_stack_a(str, stack));
