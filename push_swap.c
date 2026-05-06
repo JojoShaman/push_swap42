@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:27:23 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 16:16:11 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	handle_argv2(char **argv, int i, t_data **stack)
 	if (!check_argv(argv[i]))
 		return (error(2));
 	if (count_nb(argv[i]) > 1)
+	{
 		*stack = create_stack_a(argv[i]);
+	}
 	else
 		return (error(2));
 	return (-1);
@@ -36,7 +38,8 @@ void	handle_stack(t_data *s)
 	count = 0;
 	sort_array(t, (s->stack_a.tail->current_position + 1));
 	replace_value(t, &s->stack_a, (s->stack_a.tail->current_position + 1));
-	radix_sort(&s->stack_a, &s->stack_b, &count);
+	//radix_sort(&s->stack_a, &s->stack_b, &count);
+	simple_sort(&s->stack_a, &s->stack_b, &count);
 	ft_printf("\n");
 	print_bench(*s, count, percent / 100, percent % 100);
 	free(t);
@@ -105,7 +108,6 @@ int	main(int argc, char **argv)
 		temp_int = handle_argv2(argv, 1, &stack);
 		if (temp_int != -1)
 			return (temp_int);
-		return (0);
 	}
 	return (handle_main(argc, argv, &stack));
 }
