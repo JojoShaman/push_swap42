@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   rotate.c                                          :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 15:27:31 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 01:41:20 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 15:27:31 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/06 05:00:09 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ void	rotate(t_stack *stack, char c, int *count)
 	ft_printf("r%c\n", c);
 }
 
+static void	rotate_both_stack(t_stack *stack)
+{
+	t_list	*tmp;
+
+	tmp = stack->head;
+	if (stack->head->next == NULL)
+		return ;
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	stack->tail->next = tmp;
+	tmp->prev = stack->tail;
+	stack->tail = tmp;
+	tmp->next = NULL;
+}
+
 void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
 {
 	t_list	*tmp;
@@ -44,26 +59,8 @@ void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
 
 	if (!stack->head || !stack2->head)
 		return ;
-	tmp = stack->head;
-	tmp2 = stack2->head;
-	if (stack->head->next)
-	{
-		stack->head = stack->head->next;
-		stack->head->prev = NULL;
-		stack->tail->next = tmp;
-		tmp->prev = stack->tail;
-		stack->tail = tmp;
-		tmp->next = NULL;
-	}
-	if (stack2->head->next)
-	{
-		stack2->head = stack2->head->next;
-		stack2->head->prev = NULL;
-		stack2->tail->next = tmp2;
-		tmp2->prev = stack2->tail;
-		stack2->tail = tmp2;
-		tmp2->next = NULL;
-	}
+	rotate_both_stack(stack);
+	rotate_both_stack(stack2);
 	stack->opp->rr++;
 	(*count)++;
 	ft_printf("rr\n");
