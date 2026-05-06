@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 16:16:11 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 16:20:37 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	handle_argv2(char **argv, int i, t_data **stack)
 	if (!check_argv(argv[i]))
 		return (error(2));
 	if (count_nb(argv[i]) > 1)
-	{
 		*stack = create_stack_a(argv[i]);
-	}
 	else
 		return (error(2));
 	return (-1);
