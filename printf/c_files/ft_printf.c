@@ -6,18 +6,18 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/07 15:21:04 by srosu            #+#    #+#              */
-/*   Updated: 2026/04/24 00:13:08 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 00:08:17 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(int fd, const char *format, ...)
 {
-	int		i;
-	int		count;
-	va_list	ap;
+	int	i;
+	int	count;
 
+	va_list ap;
 	i = 0;
 	count = 0;
 	va_start(ap, format);
@@ -25,12 +25,12 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			ft_putchar_fd(format[i], 1, &count);
+			ft_putchar_fd(format[i], fd, &count);
 			i++;
 		}
 		else
 		{
-			type_is(format[++i], &ap, &count);
+			type_is(fd, format[++i], &ap, &count);
 			i++;
 		}
 	}
