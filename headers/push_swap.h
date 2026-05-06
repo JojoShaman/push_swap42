@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   push_swap.h                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:26:33 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/06 17:06:33 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	replace_value(int *tab, t_stack *a, int size);
 void	sort_array(int *tab, int size);
 void	simple_sort(t_stack *a, t_stack *b, int *count);
 void	print_bench(t_data stack, int count, int whole, int frac);
+int		word_len(char const *s, int start, char c);
 
 #endif

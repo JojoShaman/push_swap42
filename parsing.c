@@ -6,21 +6,11 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:09:39 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/06 17:02:23 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:05:21 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
-
-static int	word_len(char const *s, int start, char c)
-{
-	int	wl;
-
-	wl = 0;
-	while (s[start + wl] != c && s[start + wl] != '\0')
-		wl++;
-	return (wl);
-}
 
 static int	create_node(t_data *stack, char *substr, int i)
 {
