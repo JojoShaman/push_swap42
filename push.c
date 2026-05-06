@@ -6,21 +6,16 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:22 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 12:31:36 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 01:39:51 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack *dst, t_stack *src, int check)
+void	push(t_stack *dst, t_stack *src, char c, int *count)
 {
 	t_list	*tmp;
-	char	c;
 
-	if (check)
-		c = 'a';
-	else
-		c = 'b';
 	if (!src->head)
 		return ;
 	tmp = src->head;
@@ -36,7 +31,10 @@ void	push(t_stack *dst, t_stack *src, int check)
 	dst->head->prev = NULL;
 	if (!dst->tail)
 		dst->tail = tmp;
+	(*count)++;
+	if (c == 'a')
+		dst->opp->pa++;
+	else
+		dst->opp->pb++;
 	ft_printf("p%c\n", c);
-	update_position(dst);
-	update_position(src);
 }

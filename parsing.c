@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/05 18:54:42 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 01:38:22 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ t_data	*create_stack_a(const char *str)
 	stack->stack_a.tail = NULL;
 	stack->stack_b.head = NULL;
 	stack->stack_b.tail = NULL;
+	memset(&stack->opp, 0, sizeof(stack->opp));
+	stack->stack_a.opp = &stack->opp;
+	stack->stack_b.opp = &stack->opp;
 	while (str[start])
 	{
 		while (str[start] == ' ')

@@ -6,21 +6,17 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:31 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 12:35:23 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 01:41:20 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack *stack, int check)
+void	rotate(t_stack *stack, char c, int *count)
 {
 	t_list	*tmp;
-	char	c;
+	t_opp	opp;
 
-	if (check)
-		c = 'a';
-	else
-		c = 'b';
 	if (!stack->head)
 		return ;
 	tmp = stack->head;
@@ -33,11 +29,15 @@ void	rotate(t_stack *stack, int check)
 		stack->tail = tmp;
 		tmp->next = NULL;
 	}
+	(*count)++;
+	if (c == 'a')
+		stack->opp->ra++;
+	else
+		stack->opp->rb++;
 	ft_printf("r%c\n", c);
-	update_position(stack);
 }
 
-void	rotate_both(t_stack *stack, t_stack *stack2)
+void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -64,7 +64,7 @@ void	rotate_both(t_stack *stack, t_stack *stack2)
 		stack2->tail = tmp2;
 		tmp2->next = NULL;
 	}
+	stack->opp->rr++;
+	(*count)++;
 	ft_printf("rr\n");
-	update_position(stack);
-	update_position(stack2);
 }

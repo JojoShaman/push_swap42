@@ -6,21 +6,16 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/01 13:01:14 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/06 01:43:02 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack *stack, int check)
+void	reverse_rotate(t_stack *stack, char c, int *count)
 {
 	t_list	*tmp;
-	char	c;
 
-	if (check)
-		c = 'a';
-	else
-		c = 'b';
 	if (!stack->head)
 		return ;
 	if (!stack->head->next)
@@ -32,11 +27,15 @@ void	reverse_rotate(t_stack *stack, int check)
 	tmp->next = stack->head;
 	stack->head = tmp;
 	stack->head->prev = NULL;
+	(*count)++;
+	if (c == 'a')
+		stack->opp->rra++;
+	else
+		stack->opp->rrb++;
 	ft_printf("rr%c\n", c);
-	update_position(stack);
 }
 
-void	reverse_rotate_both(t_stack *stack, t_stack *stack2)
+void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -57,7 +56,7 @@ void	reverse_rotate_both(t_stack *stack, t_stack *stack2)
 	stack2->head = tmp2;
 	stack->head->prev = NULL;
 	stack2->head->prev = NULL;
+	(*count)++;
+	stack->opp->rrr++;
 	ft_printf("rrr\n");
-	update_position(stack);
-	update_position(stack2);
 }
