@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:18:10 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 17:55:23 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int	handle_main(int argc, char **argv, t_data **stack)
 	tmp = NULL;
 	j = 0;
 	i = 1;
-	memset(&flags, 0, sizeof(t_bool));
-	//remplacer par ft_memset
+	ft_memset(&flags, 0, sizeof(t_bool));
 	if (argc > 2)
 	{
 		while (i < argc)
