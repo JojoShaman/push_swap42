@@ -6,46 +6,46 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 18:56:26 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/07 17:38:36 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/07 17:58:54 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/push_swap.h"
 
-static float	compute_disorder2(t_stack *stack, int n, t_list *i)
+static float	count_disorder(t_stack *stack, size_t stack_size, t_list *node)
 {
-	int		mistakes;
 	int		total_pairs;
-	t_list	*j;
+	int		mistakes;
+	t_list	*next_node;
 
-	total_pairs = n * (n - 1) / 2;
-	while (i)
+	total_pairs = stack_size * (stack_size - 1) / 2;
+	while (node)
 	{
-		j = i->next;
-		while (j)
+		next_node = node->next;
+		while (next_node)
 		{
-			if (i->value > j->value)
+			if (node->value > next_node->value)
 				mistakes++;
-			j = j->next;
+			next_node = next_node->next;
 		}
-		i = i->next;
+		node = node->next;
 	}
 	return ((float) mistakes / total_pairs);
 }
 
 float	compute_disorder(t_stack *stack)
 {
-	int		n;
-	t_list	*i;
+	size_t	stack_size;
+	t_list	*node;
 
-	n = 0;
-	i = stack->head;
-	while (i)
+	stack_size = 0;
+	node = stack->head;
+	while (node)
 	{
-		n++;
-		i = i->next;
+		stack_size++;
+		node = node->next;
 	}
-	if (n < 2)
+	if (stack_size < 2)
 		return (0.0f);
-	return (compute_disorder2(stack, n, i));
+	return (count_disorder(stack, stack_size, node));
 }
