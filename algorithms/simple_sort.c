@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:29:20 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 20:30:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	simple_sort(t_stack *a, t_stack *b, int *count)
 	int	smallest;
 	int	size;
 
-	size = a->tail->current_position + 1;
+	size = stack_size(a);
 	if (size == 2)
 	{
 		if (a->head->value > a->head->next->value)
