@@ -1,86 +1,84 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   parsing.c                                         :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 23:39:48 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:09:39 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/07 17:23:43 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
 
-static int	create_node(t_data *stack, char *substr, int i)
+static int	create_node(t_stack *stack_a, char *substr, int i)
 {
 	t_list	*node;
 
 	node = new_node(ft_atoi(substr));
-	if (!node)
+	if (node == NULL)
 	{
-		ft_lstclear(&stack->stack_a);
+		ft_lstclear(stack_a);
 		free(substr);
-		free(stack);
+		free(stack_a);
 		return (0);
 	}
 	node->current_position = i;
 	if (i == 0)
 	{
-		stack->stack_a.head = node;
-		stack->stack_a.tail = node;
+		stack_a->head = node;
+		stack_a->tail = node;
 	}
 	else if (i > 0)
 	{
-		link_node(stack->stack_a.tail, node);
-		stack->stack_a.tail = node;
+		link_node(stack_a->tail, node);
+		stack_a->tail = node;
 	}
 	return (1);
 }
 
-static t_data	*construct_stack_a(const char *str, t_data *stack)
+static t_data	*construct_stack_a(const char *str, t_data *stack_data)
 {
 	int		start;
-	char	*substr;
-	int		i;
-	int		temp;
+	int		index;
+	char	*sub_str;
 
 	start = 0;
-	i = 0;
+	index = 0;
 	while (str[start])
 	{
 		while (str[start] == ' ')
 			start++;
 		if (!str[start])
 			break ;
-		substr = ft_substr(str, start, word_len(str, start, ' '));
-		temp = create_node(stack, substr, i++);
-		if (temp == 0)
+		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		if (create_node(&stack_data->stack_a, sub_str, index++) == 0)
 			return (NULL);
-		free(substr);
+		free(sub_str);
 		start += word_len(str, start, ' ');
 	}
-	return (stack);
+	return (stack_data);
+}
+
+static void	init_stack(t_data *stack_data, t_stack *stack)
+{
+	stack->head = NULL;
+	stack->tail = NULL;
+	stack->bool = &stack_data->flags;
+	stack->opp = &stack_data->opp;
 }
 
 t_data	*create_stack_a(const char *str)
 {
-	t_data	*stack;
+	t_data	*stack_data;
 
-	stack = malloc(sizeof(*stack));
-	if (!stack)
+	stack_data = malloc(sizeof(*stack_data));
+	if (stack_data == NULL)
 		return (NULL);
-	stack->stack_a.head = NULL;
-	stack->stack_a.tail = NULL;
-	stack->stack_b.head = NULL;
-	stack->stack_b.tail = NULL;
-	stack->big_o.strategy = "";
-	memset(&stack->opp, 0, sizeof(stack->opp));
-	memset(&stack->flags, 0, sizeof(stack->flags));
-	//remplacer memset par ft_memset
-	stack->stack_a.bool = &stack->flags;
-	stack->stack_b.bool = &stack->flags;
-	stack->stack_a.opp = &stack->opp;
-	stack->stack_b.opp = &stack->opp;
-	return (construct_stack_a(str, stack));
+	memset(&stack_data->opp, 0, sizeof(stack_data->opp));
+	memset(&stack_data->flags, 0, sizeof(stack_data->flags));
+	stack_data->big_o.strategy = "";
+	init_stack(stack_data, &stack_data->stack_a);
+	return (construct_stack_a(str, stack_data));
 }
