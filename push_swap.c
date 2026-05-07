@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 17:55:23 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 20:43:56 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	handle_stack(t_data *s)
 	percent = (int)(disorder * 10000 + 0.5);
 	t = copy_into_array(&s->stack_a);
 	count = 0;
-	sort_array(t, (s->stack_a.tail->current_position + 1));
-	replace_value(t, &s->stack_a, (s->stack_a.tail->current_position + 1));
+	sort_array(t, stack_size(&s->stack_a));
+	replace_value(t, &s->stack_a, stack_size(&s->stack_a));
 	adapt_strategy(s, disorder, &count);
 	if (s->flags.bench_mode)
 		print_bench(*s, count, percent / 100, percent % 100);
