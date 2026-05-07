@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 17:32:14 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 20:26:56 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ void	print_bench(t_data stack, int count, int whole, int frac);
 int		word_len(char const *s, int start, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
+size_t	stack_size(t_stack *stack);
 
 #endif
