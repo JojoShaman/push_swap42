@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/01 18:53:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:25:20 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 22:34:11 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@ int	check_argv(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int	check_flag(char *str, t_bool *flags)
+{
+	if (ft_strcmp(str, "--bench") == 0)
+	{
+		flags->bench_mode = 1;
+		return (1);
+	}
+	if (ft_strcmp(str, "--adaptive") == 0)
+	{
+		flags->adaptive = 1;
+		return (1);
+	}
+	return (0);
 }
 
 int	error(int fd)
