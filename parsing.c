@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 17:32:24 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 17:45:45 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ t_data	*create_stack_a(const char *str)
 	ft_memset(&stack_data->flags, 0, sizeof(stack_data->flags));
 	stack_data->big_o.strategy = "";
 	init_stack(stack_data, &stack_data->stack_a);
+	init_stack(stack_data, &stack_data->stack_b);
 	return (construct_stack_a(str, stack_data));
 }

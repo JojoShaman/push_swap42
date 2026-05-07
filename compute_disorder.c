@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   compute_disorder.c                                :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/01 18:56:26 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:20:58 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   compute_disorder.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/01 18:56:26 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/07 17:38:36 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./headers/push_swap.h"
 
-float	compute_disorder(t_stack *stack)
+static float	compute_disorder2(t_stack *stack, int n, t_list *i)
 {
-	int		n;
-	int		total_pairs;
 	int		mistakes;
-	t_list	*i;
+	int		total_pairs;
 	t_list	*j;
 
-	n = 0;
-	i = stack->head;
-	while (i)
-	{
-		n++;
-		i = i->next;
-	}
-	if (n < 2)
-		return (0.0f);
 	total_pairs = n * (n - 1) / 2;
-	mistakes = 0;
-	i = stack->head;
 	while (i)
 	{
 		j = i->next;
@@ -44,4 +31,21 @@ float	compute_disorder(t_stack *stack)
 		i = i->next;
 	}
 	return ((float) mistakes / total_pairs);
+}
+
+float	compute_disorder(t_stack *stack)
+{
+	int		n;
+	t_list	*i;
+
+	n = 0;
+	i = stack->head;
+	while (i)
+	{
+		n++;
+		i = i->next;
+	}
+	if (n < 2)
+		return (0.0f);
+	return (compute_disorder2(stack, n, i));
 }
