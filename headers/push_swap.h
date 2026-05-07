@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 21:16:17 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 22:35:30 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ t_list	*new_node(int content);
 void	link_node(t_list *node, t_list *node2);
 int		count_nb(const char *str);
 
+/* stack handlers */
+void	run_sort(t_data *s);
+void	adapt_strategy(t_data *s, float disorder, int *count);
+
 /* rules */
 void	swap(t_stack *stack, char c, int *count);
 void	push(t_stack *dst, t_stack *src, char c, int *count);
@@ -103,10 +107,13 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
 size_t	stack_size(t_stack *stack);
 
-/* error check */
-int	is_valid(int c);
-int	check_argv(char *str);
-int	error(int fd);
+/* process input */
+int		is_valid(int c);
+int		check_argv(char *str);
+int		error(int fd);
+int		check_flag(char *str, t_bool *flags);
+int		parse_single_arg(char **argv, int i, t_data **stack);
+char	*process_argv(int argc, char **argv, t_bool *flags);
 
 /* libft */
 size_t	ft_strlen(const char *str);
