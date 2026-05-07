@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:09:25 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 16:00:19 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ void	swap(t_stack *stack, char c, int *count)
 	else
 		stack->opp->sb++;
 	(*count)++;
-	if (!stack->bool->bench_mode)
-		ft_printf(1, "s%c\n", c);
+	ft_printf(1, "s%c\n", c);
 }

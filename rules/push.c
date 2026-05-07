@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:26:22 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:10:00 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 16:03:08 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	push(t_stack *dst, t_stack *src, char c, int *count)
 		dst->opp->pa++;
 	else
 		dst->opp->pb++;
-	if (!dst->bool->bench_mode)
-		ft_printf(1, "p%c\n", c);
+	ft_printf(1, "p%c\n", c);
 }
