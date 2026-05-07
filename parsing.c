@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:09:39 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/07 17:23:43 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   parsing.c                                         :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/07 17:32:24 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ t_data	*create_stack_a(const char *str)
 	stack_data = malloc(sizeof(*stack_data));
 	if (stack_data == NULL)
 		return (NULL);
-	memset(&stack_data->opp, 0, sizeof(stack_data->opp));
-	memset(&stack_data->flags, 0, sizeof(stack_data->flags));
+	ft_memset(&stack_data->opp, 0, sizeof(stack_data->opp));
+	ft_memset(&stack_data->flags, 0, sizeof(stack_data->flags));
 	stack_data->big_o.strategy = "";
 	init_stack(stack_data, &stack_data->stack_a);
 	return (construct_stack_a(str, stack_data));
