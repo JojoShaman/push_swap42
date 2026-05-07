@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/05 17:59:48 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:29:30 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/07 20:30:15 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	radix_sort(t_stack *a, t_stack *b, int *count)
 
 	bits = bits_count(find_biggest(a)->value);
 	i = 0;
-	size = find_biggest(a)->value + 1;
+	size = stack_size(a);
 	while (i < bits)
 	{
 		j = 0;
