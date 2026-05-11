@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:35:30 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/11 10:08:29 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct s_list
 {
 	int				value;
 	int				current_position;
+	int				above_median;
 	struct s_list	*prev;
 	struct s_list	*next;
+	struct s_list	*target_node;
 }	t_list;
 
 typedef struct s_bool
@@ -79,7 +81,7 @@ void	link_node(t_list *node, t_list *node2);
 int		count_nb(const char *str);
 
 /* stack handlers */
-void	run_sort(t_data *s);
+void	run_sort(t_stack *a, t_stack *b, t_data *stacks);
 void	adapt_strategy(t_data *s, float disorder, int *count);
 
 /* rules */
@@ -106,6 +108,9 @@ void	print_bench(t_data stack, int count, int whole, int frac);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
 size_t	stack_size(t_stack *stack);
+void	update_median(t_stack *stack);
+void	update_position(t_stack *stack);
+void	find_target_node(t_stack *a, t_stack *b);
 
 /* process input */
 int		is_valid(int c);
