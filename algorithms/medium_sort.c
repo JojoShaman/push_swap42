@@ -1,61 +1,85 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   medium_sort.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 05:50:14 by mbuchet           #+#    #+#             */
-/*   Updated: 2026/05/10 23:07:06 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   medium_sort.c                                     :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/11 11:26:40 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/13 16:50:54 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-static int	ft_sqrt(int nb)
+t_list	*find_value(t_stack *stack, int nb)
 {
-	int	index;
+	t_list	*track;
 
-	index = 0;
-	if (nb <= 0)
-		return (0);
-	while (index <= nb)
+	track = stack->head;
+	while (track && track->value != nb)
+		track = track->next;
+	return (track);
+}
+
+static void	update_cost(t_stack *stack)
+{
+	t_list	*track;
+	t_list	*target_node;
+	int		pos;
+	int		t_pos;
+	int		median;
+
+	track = stack->head;
+	while (track)
 	{
-		if (index * index == nb)
-			return (index);
-		index++;
+		target_node = track->target_node;
+		pos = track->current_position;
+		t_pos = target_node->current_position;
+		if (track->above_median && target_node->above_median)
+			track->cost = pos + t_pos;
+		else if (!track->above_median && target_node->above_median)
+			track->cost = (stack_size(stack) - pos) + t_pos;
+		else if (!track->above_median && !target_node->above_median)
+			track->cost = (stack_size(stack) - pos) + (stack_size(stack) - t_pos);
 	}
-	return (ft_sqrt(nb - 1));
 }
 
 void	medium_sort(t_stack *a, t_stack *b, int *count)
 {
-	int		a_size;
+	int		size_a;
 	int		chunk_size;
-	int		index;
-	int		chunk_index;
+	int		chunk;
+	t_list	*track_a;
+	t_list	*track_b;
+	t_list	*smallest;
 	int		biggest;
+	t_list	*value;
 
-	a_size = stack_size(a);
-	chunk_size = ft_sqrt(a_size);
-	index = 0;
-	while (chunk_size != 0)
+	size_a = stack_size(a);
+	chunk_size = 0;
+	chunk = 0;
+	track_a = a->head;
+	track_b = b->head;
+	if (size_a <= 100)
+		chunk_size = 100 / 10;
+	else
+		chunk_size = 100 / 2;
+	smallest = find_smallest(a);
+	biggest = smallest->value + chunk_size;
+	while (1)
 	{
-		chunk_index = 0;
-		while (chunk_index < chunk_size)
-		{
+		if (track_a->value >= smallest->value && track_a->value >= biggest)
 			push(b, a, 'b', count);
-			chunk_index++;
-		}
-		a_size = a_size - chunk_index;
-		chunk_size = ft_sqrt(a_size);
-		while (b->head)
+		if (chunk == 2)
 		{
-			biggest = find_biggest(b)->value;
-			while (b->head->value != biggest)
-				rotate(b, 'b', count);
-			push(a, b, 'a', count);
+			sort_three(b, count);
+			break ;
 		}
-		index++;
 	}
+	find_target_node(a, b);
+	while (a->head)
+	{
+		if ()
+		}
 }
