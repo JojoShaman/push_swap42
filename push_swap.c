@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:32:45 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/11 09:56:55 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_and_run(int argc, char **argv, t_data **stack)
 	if (!*stack)
 		return (1);
 	(*stack)->flags = flags;
-	run_sort(*stack);
+	run_sort(&(*stack)->stack_a, &(*stack)->stack_b, *stack);
 	return (0);
 }
 
