@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:35 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:49:20 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/11 12:18:08 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_list	*new_node(int content)
 		return (NULL);
 	new->value = content;
 	new->current_position = 0;
+	new->chunk_pos = 0;
+	new->cost = 0;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
