@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   handle_stack.c                                    :+:      :+:    :+:    */
+/*   run_sort.c                                        :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/07 22:14:31 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:21:57 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/11 10:39:58 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	run_sort(t_data *s)
+void	run_sort(t_stack *a, t_stack *b, t_data *stacks)
 {
 	float	disorder;
 	int		percent;
 	int		*t;
 	int		count;
+	t_list	*track;
 
-	disorder = compute_disorder(&s->stack_a);
+	disorder = compute_disorder(a);
 	percent = (int)(disorder * 10000 + 0.5);
-	t = copy_into_array(&s->stack_a);
+	t = copy_into_array(a);
 	count = 0;
-	sort_array(t, stack_size(&s->stack_a));
-	replace_value(t, &s->stack_a, stack_size(&s->stack_a));
-	adapt_strategy(s, disorder, &count);
-	if (s->flags.bench_mode)
-		print_bench(*s, count, percent / 100, percent % 100);
+	sort_array(t, stack_size(a));
+	replace_value(t, a, stack_size(a));
+	adapt_strategy(stacks, disorder, &count);
+	if (a->bool->bench_mode)
+		print_bench(*stacks, count, percent / 100, percent % 100);
 	free(t);
-	ft_lstclear(&s->stack_a);
-	ft_lstclear(&s->stack_b);
-	free(s);
+	ft_lstclear(a);
+	ft_lstclear(b);
+	free(stacks);
 }
