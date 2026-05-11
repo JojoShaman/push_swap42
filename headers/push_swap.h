@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -7,6 +8,15 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
 /*   Updated: 2026/05/13 00:03:19 by mbuchet          ###   ########.fr       */
+=======
+/*                                                       :::      ::::::::    */
+/*   push_swap.h                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/11 12:17:51 by srosu           ###   ########.fr        */
+>>>>>>> 6c01fc1 (add object)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +35,8 @@ typedef struct s_list
 	int				value;
 	int				current_position;
 	int				above_median;
+	int				chunk_pos;
+	int				cost;
 	struct s_list	*prev;
 	struct s_list	*next;
 	struct s_list	*target_node;
@@ -112,6 +124,7 @@ size_t	stack_size(t_stack *stack);
 void	update_median(t_stack *stack);
 void	update_position(t_stack *stack);
 void	find_target_node(t_stack *a, t_stack *b);
+void	sort_three(t_stack *a, int *count);
 
 /* process input */
 int		is_valid(int c);
