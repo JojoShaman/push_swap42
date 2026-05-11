@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   push_swap.h                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:35:30 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/10 01:37:12 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count);
 void	radix_sort(t_stack *a, t_stack *b, int *count);
 void	simple_sort(t_stack *a, t_stack *b, int *count);
 void	sort_array(int *tab, int size);
+void    medium_sort(t_stack *a, t_stack *b, int *count);
 
 /* algoritm utils */
 t_list	*find_biggest(t_stack *stack);
