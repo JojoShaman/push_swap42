@@ -6,24 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/11 10:07:33 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/11 12:15:15 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-
-static void	sort_three(t_stack *a, int *count)
-{
-	t_list	*biggest;
-
-	biggest = find_biggest(a);
-	if (a->head->value == biggest->value)
-		rotate(a, 'a', count);
-	else if (a->head->next->value == biggest->value)
-		reverse_rotate(a, 'a', count);
-	if (a->head->value > a->head->next->value)
-		swap(a, 'a', count);
-}
 
 static void	sort_four(t_stack *a, t_stack *b, int *count)
 {
