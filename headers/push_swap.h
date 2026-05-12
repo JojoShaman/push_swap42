@@ -6,7 +6,7 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/12 21:42:15 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/13 00:01:16 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int		check_duplicate_args(int argc, char **argv);
 /* libft */
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_lstclear(t_stack *stack);
 char	*ft_strjoin(char *dst, const char *src);
