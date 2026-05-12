@@ -6,7 +6,7 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/13 00:01:16 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/13 00:03:19 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
 int		check_duplicate_args(int argc, char **argv);
+int		check_int_limits_args(int argc, char **argv);
 
 /* libft */
 size_t	ft_strlen(const char *str);
