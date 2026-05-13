@@ -6,7 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
+<<<<<<< HEAD
 /*   Updated: 2026/05/11 12:17:51 by srosu           ###   ########.fr        */
+=======
+/*   Updated: 2026/05/13 16:55:26 by srosu           ###   ########.fr        */
+>>>>>>> feat/medium_sort_2
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +102,7 @@ void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count);
 void	radix_sort(t_stack *a, t_stack *b, int *count);
 void	simple_sort(t_stack *a, t_stack *b, int *count);
 void	sort_array(int *tab, int size);
+void	medium_sort(t_stack *a, t_stack *b, int *count);
 
 /* algoritm utils */
 t_list	*find_biggest(t_stack *stack);
@@ -122,10 +127,13 @@ int		error(int fd);
 int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
+int		check_duplicate_args(int argc, char **argv);
+int		check_int_limits_args(int argc, char **argv);
 
 /* libft */
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_lstclear(t_stack *stack);
 char	*ft_strjoin(char *dst, const char *src);

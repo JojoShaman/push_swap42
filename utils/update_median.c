@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/11 08:47:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/11 09:58:06 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/12 23:20:38 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ void	update_median(t_stack *stack)
 	track = stack->head;
 	while (track)
 	{
-		if (track->current_position < size / 2)
+		if (track->current_position <= size / 2)
 			track->above_median = 1;
 		else
 			track->above_median = 0;
+		if (size > 3 && size % 2 == 1)
+		{
+			if (track->current_position == (size / 2) + 1)
+				track->above_median = 1;
+		}
 		track = track->next;
 	}
 }

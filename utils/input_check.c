@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/01 18:53:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:34:11 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 02:04:06 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ int	check_flag(char *str, t_bool *flags)
 	if (ft_strcmp(str, "--adaptive") == 0)
 	{
 		flags->adaptive = 1;
+		return (1);
+	}
+	if (ft_strcmp(str, "--simple") == 0)
+	{
+		flags->simple = 1;
+		return (1);
+	}
+	if (ft_strcmp(str, "--medium") == 0)
+	{
+		flags->medium = 1;
+		return (1);
+	}
+	if (ft_strcmp(str, "--complex") == 0)
+	{
+		flags->complex = 1;
 		return (1);
 	}
 	return (0);

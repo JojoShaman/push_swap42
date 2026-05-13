@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   process_input.c                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 22:30:38 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   process_input.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/07 22:29:32 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/12 23:59:14 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,44 @@ int	parse_single_arg(char **argv, int i, t_data **stack)
 	else
 		return (error(2));
 	return (-1);
+}
+
+int	check_int_limits_args(int argc, char **argv)
+{
+	int		i;
+	long	nb_i;
+
+	i = 1;
+	while (i < argc)
+	{
+		nb_i = ft_atol(argv[i]);
+		if (nb_i < INT_MIN || nb_i > INT_MAX)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_duplicate_args(int argc, char **argv)
+{
+	int		i;
+	int		j;
+	long	nb_i;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		nb_i = ft_atoi(argv[i]);
+		while (j < argc)
+		{
+			if (nb_i == ft_atoi(argv[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 char	*process_argv(int argc, char **argv, t_bool *flags)

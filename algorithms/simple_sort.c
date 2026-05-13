@@ -6,24 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/11 10:07:33 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/12 21:34:22 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-
-static void	sort_three(t_stack *a, int *count)
-{
-	t_list	*biggest;
-
-	biggest = find_biggest(a);
-	if (a->head->value == biggest->value)
-		rotate(a, 'a', count);
-	else if (a->head->next->value == biggest->value)
-		reverse_rotate(a, 'a', count);
-	if (a->head->value > a->head->next->value)
-		swap(a, 'a', count);
-}
 
 static void	sort_four(t_stack *a, t_stack *b, int *count)
 {
@@ -34,7 +21,7 @@ static void	sort_four(t_stack *a, t_stack *b, int *count)
 		rotate(a, 'a', count);
 	push(b, a, 'b', count);
 	(*count)++;
-	sort_three(a, count);
+	sort_three(a, 'a', count);
 	push(a, b, 'a', count);
 }
 
@@ -54,7 +41,7 @@ static void	sort_five(t_stack *a, t_stack *b, int *count)
 	}
 	if (b->head->value < b->head->next->value)
 		swap(b, 'b', count);
-	sort_three(a, count);
+	sort_three(a, 'a', count);
 	while (i--)
 		push(a, b, 'a', count);
 }
@@ -78,7 +65,7 @@ void	simple_sort(t_stack *a, t_stack *b, int *count)
 		return ;
 	}
 	if (size == 3)
-		return (sort_three(a, count));
+		return (sort_three(a, 'a', count));
 	else if (size == 4)
 		return (sort_four(a, b, count));
 	else if (size == 5)
