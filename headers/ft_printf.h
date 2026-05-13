@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 int		ft_printf(int fd, const char *format, ...);
-void	type_is(int fd, char c, va_list * ap, int *count);
+void	type_is(int fd, char c, va_list *ap, int *count);
 void	ft_putchar_fd(int c, int fd, int *count);
 void	ft_putnbr_base(int fd, unsigned long nb, char *base, int *count);
 void	ft_putstr_fd(char *s, int fd, int *count);

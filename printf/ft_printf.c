@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   update_median.c                                   :+:      :+:    :+:    */
+/*   ft_printf.c                                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/11 08:47:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/12 23:20:38 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/07 15:21:04 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/07 00:08:17 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
-#include <stddef.h>
+#include "../headers/ft_printf.h"
 
-void	update_median(t_stack *stack)
+int	ft_printf(int fd, const char *format, ...)
 {
-	size_t	size;
-	t_list	*track;
+	int			i;
+	int			count;
+	va_list		ap;
 
-	size = stack_size(stack);
-	track = stack->head;
-	while (track)
+	i = 0;
+	count = 0;
+	va_start(ap, format);
+	while (format[i])
 	{
-		if ((size_t)(track->current_position) <= size / 2)
-			track->above_median = 1;
-		else
-			track->above_median = 0;
-		if (size > 3 && size % 2 == 1)
+		if (format[i] != '%')
 		{
-			if (track->current_position == (size / 2) + 1)
-				track->above_median = 1;
+			ft_putchar_fd(format[i], fd, &count);
+			i++;
 		}
-		track = track->next;
+		else
+		{
+			type_is(fd, format[++i], &ap, &count);
+			i++;
+		}
 	}
+	va_end(ap);
+	return (count);
 }

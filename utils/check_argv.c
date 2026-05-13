@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_putnbr_base.c                                  :+:      :+:    :+:    */
+/*   check_argv.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/07 16:12:57 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:06:52 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/13 17:38:05 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/13 17:38:18 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../headers/push_swap.h"
 
-void	ft_putnbr_base(int fd, unsigned long nb, char *base, int *count)
+int	check_argv(char *str)
 {
-	int		base_size;
-	char	tab[20];
-	int		i;
+	int	i;
 
-	base_size = 0;
 	i = 0;
-	if (nb == 0)
+	if (!str[0])
+		return (0);
+	while (str[i])
 	{
-		ft_putchar_fd('0', fd, count);
-		return ;
-	}
-	while (base[base_size])
-		base_size++;
-	while (nb > 0)
-	{
-		tab[i] = base[nb % base_size];
-		nb /= base_size;
+		if (str[i] == '-' && i > 0 && str[i - 1] == '-')
+			return (0);
+		if (!is_valid(str[i]))
+			return (0);
 		i++;
 	}
-	while (i != 0)
-		ft_putchar_fd(tab[--i], fd, count);
+	return (1);
 }

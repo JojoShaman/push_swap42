@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 17:18:50 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 18:11:21 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	parse_single_arg(char **argv, int i, t_data **stack)
 	return (-1);
 }
 
-int	check_int_limits_args(int argc, char **argv)
+int	check_int_limits_args(int argc, char **argv, t_bool *flags)
 {
 	int		i;
 	long	nb_i;
@@ -31,7 +31,7 @@ int	check_int_limits_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (is_flag(argv[i]))
+		if (check_flag(argv[i], flags))
 		{
 			i++;
 			continue ;
@@ -44,7 +44,7 @@ int	check_int_limits_args(int argc, char **argv)
 	return (1);
 }
 
-int	check_duplicate_args(int argc, char **argv)
+int	check_duplicate_args(int argc, char **argv, t_bool *flags)
 {
 	int		i;
 	int		j;
@@ -53,20 +53,14 @@ int	check_duplicate_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (is_flag(argv[i]))
-		{
-			i++;
+		if (check_flag(argv[i++], flags))
 			continue ;
-		}
 		j = i + 1;
 		nb_i = ft_atoi(argv[i]);
 		while (j < argc)
 		{
-			if (is_flag(argv[j]))
-			{
-				j++;
+			if (check_flag(argv[j++], flags))
 				continue ;
-			}
 			if (nb_i == ft_atoi(argv[j]))
 				return (0);
 			j++;

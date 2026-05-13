@@ -1,22 +1,29 @@
-NAME = push_swap.a
-CC = cc
+NAME = push_swap
+PRINTF_LIB = libftprintf.a
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SOURCES = algorithms/*.c rules/*.c utils/*.c *.c
-OBJECTS = $(SOURCES:.c=.o)
+INCLUDES = -I. -Iheaders
+SRCS = $(wildcard sorting/*.c rules/*.c utils/*.c) parsing.c push_swap.c
+OBJS = $(SRCS:.c=.o)
+PRINTF_SRCS = $(wildcard printf/*.c)
+PRINTF_OBJS = $(PRINTF_SRCS:.c=.o)
 
-all: $(NAME)
+all: $(PRINTF_LIB) $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I . -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+$(PRINTF_LIB): $(PRINTF_OBJS)
+	ar rcs $(PRINTF_LIB) $(PRINTF_OBJS)
+
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -L. -lftprintf -o $(NAME)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJS) $(PRINTF_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(PRINTF_LIB)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 17:45:45 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 17:58:26 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	init_stack(t_data *stack_data, t_stack *stack)
 {
 	stack->head = NULL;
 	stack->tail = NULL;
-	stack->bool = &stack_data->flags;
+	stack->flag_check = &stack_data->flags;
 	stack->opp = &stack_data->opp;
 }
 

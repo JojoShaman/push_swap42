@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 17:18:50 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 23:21:47 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*target_node;
 }	t_list;
+
+typedef struct s_chunk
+{
+	int	min;
+	int	max;
+	int	target_size;
+}	t_chunk;
 
 typedef struct s_bool
 {
@@ -66,7 +73,7 @@ typedef struct s_stack
 	t_list	*head;
 	t_list	*tail;
 	t_opp	*opp;
-	t_bool	*bool;
+	t_bool	*flag_check;
 	t_strat	*s_ptr;
 }	t_stack;
 
@@ -106,6 +113,8 @@ void	medium_sort(t_stack *a, t_stack *b, int *count);
 /* algoritm utils */
 t_list	*find_biggest(t_stack *stack);
 t_list	*find_smallest(t_stack *stack);
+t_list	*find_cheapest(t_stack *stack, int smallest, int biggest);
+void	find_target_node(t_stack *a, t_stack *b);
 int		bits_count(int max);
 float	compute_disorder(t_stack *stack);
 int		*copy_into_array(t_stack *a);
@@ -116,19 +125,19 @@ void	*ft_memset(void *b, int c, size_t len);
 size_t	stack_size(t_stack *stack);
 void	update_median(t_stack *stack);
 void	update_position(t_stack *stack);
-void	find_target_node(t_stack *a, t_stack *b);
+void	update_cost(t_stack *stack, t_stack *stack2);
 void	sort_three(t_stack *stack, char c, int *count);
+void	operations(t_stack *a, t_stack *b, t_list *cheapest, int *count);
 
 /* process input */
 int		is_valid(int c);
 int		check_argv(char *str);
 int		error(int fd);
-int		is_flag(char *str);
 int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
-int		check_duplicate_args(int argc, char **argv);
-int		check_int_limits_args(int argc, char **argv);
+int		check_duplicate_args(int argc, char **argv, t_bool *flags);
+int		check_int_limits_args(int argc, char **argv, t_bool *flags);
 
 /* libft */
 size_t	ft_strlen(const char *str);

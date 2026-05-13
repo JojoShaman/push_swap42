@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/12 21:34:22 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 17:36:11 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ static void	update_info(t_stack *stack)
 	update_median(stack);
 }
 
-void	simple_sort(t_stack *a, t_stack *b, int *count)
+static void	small_sort(t_stack *a, t_stack *b, int *count)
 {
-	t_list	*smallest;
-	int		size;
+	int	size;
 
 	size = stack_size(a);
 	if (size == 2)
@@ -70,6 +69,16 @@ void	simple_sort(t_stack *a, t_stack *b, int *count)
 		return (sort_four(a, b, count));
 	else if (size == 5)
 		return (sort_five(a, b, count));
+}
+
+void	simple_sort(t_stack *a, t_stack *b, int *count)
+{
+	t_list	*smallest;
+	int		size;
+
+	size = stack_size(a);
+	if (size <= 5)
+		return (small_sort(a, b, count));
 	while (a->head)
 	{
 		smallest = find_smallest(a);

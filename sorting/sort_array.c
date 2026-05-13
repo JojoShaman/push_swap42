@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   update_median.c                                   :+:      :+:    :+:    */
+/*   sort_array.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/11 08:47:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/12 23:20:38 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/05 23:24:54 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/14 00:07:17 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-#include <stddef.h>
 
-void	update_median(t_stack *stack)
+void	sort_array(int *tab, int size)
 {
-	size_t	size;
-	t_list	*track;
+	int	tmp;
+	int	swapped;
+	int	i;
 
-	size = stack_size(stack);
-	track = stack->head;
-	while (track)
+	tmp = 0;
+	swapped = 1;
+	while (swapped)
 	{
-		if ((size_t)(track->current_position) <= size / 2)
-			track->above_median = 1;
-		else
-			track->above_median = 0;
-		if (size > 3 && size % 2 == 1)
+		swapped = 0;
+		i = 0;
+		while (i < size - 1)
 		{
-			if (track->current_position == (size / 2) + 1)
-				track->above_median = 1;
+			if (tab[i] > tab[i + 1])
+			{
+				tmp = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = tmp;
+				swapped = 1;
+			}
+			i++;
 		}
-		track = track->next;
 	}
 }

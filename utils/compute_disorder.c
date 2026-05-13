@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./headers/push_swap.h"
+#include "../headers/push_swap.h"
 
-static float	count_disorder(t_stack *stack, size_t stack_size, t_list *node)
+static float	count_disorder(size_t stack_size, t_list *node)
 {
 	int		total_pairs;
 	int		mistakes;
@@ -41,5 +41,5 @@ float	compute_disorder(t_stack *stack)
 	size = stack_size(stack);
 	if (size < 2)
 		return (0.0f);
-	return (count_disorder(stack, size, stack->head));
+	return (count_disorder(size, stack->head));
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../headers/ft_printf.h"
 
 static void	check_ptr_string(char *s, int fd, int *count)
 {
@@ -34,7 +34,7 @@ static void	check_ptr_p(int fd, unsigned long p, int *count)
 	}
 }
 
-void	type_is(int fd, char c, va_list * ap, int *count)
+void	type_is(int fd, char c, va_list *ap, int *count)
 {
 	unsigned long	arg;
 

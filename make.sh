@@ -1,1 +1,0 @@
-cc algorithms/*.c rules/*.c utils/*.c *.c -I./headers -L./printf -lftprintf -o push_swap

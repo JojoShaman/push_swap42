@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_printf.c                                       :+:      :+:    :+:    */
+/*   ft_putnbr_fd.c                                    :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/07 15:21:04 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 00:08:17 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/07 15:52:34 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/24 15:55:38 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../headers/ft_printf.h"
 
-int	ft_printf(int fd, const char *format, ...)
+void	ft_putnbr_fd(long long n, int fd, int *count)
 {
-	int	i;
-	int	count;
+	char				c;
+	unsigned long long	nb;
 
-	va_list ap;
-	i = 0;
-	count = 0;
-	va_start(ap, format);
-	while (format[i])
+	if (n < 0)
 	{
-		if (format[i] != '%')
-		{
-			ft_putchar_fd(format[i], fd, &count);
-			i++;
-		}
-		else
-		{
-			type_is(fd, format[++i], &ap, &count);
-			i++;
-		}
+		write(fd, "-", 1);
+		++(*count);
+		nb = -(unsigned long long) n;
 	}
-	va_end(ap);
-	return (count);
+	else
+		nb = n;
+	if (nb >= 10)
+		ft_putnbr_fd((nb / 10), fd, count);
+	c = (nb % 10) + '0';
+	write(fd, &c, 1);
+	++(*count);
 }

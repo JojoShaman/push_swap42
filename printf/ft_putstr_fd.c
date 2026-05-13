@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   sort_array.c                                      :+:      :+:    :+:    */
+/*   ft_putstr_fd.c                                    :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/05 23:24:54 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/06 12:29:15 by srosu           ###   ########.fr        */
+/*   Created: 2026/04/07 15:53:46 by srosu            #+#    #+#              */
+/*   Updated: 2026/04/16 15:19:18 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../headers/ft_printf.h"
 
-void	sort_array(int *tab, int size)
+void	ft_putstr_fd(char *s, int fd, int *count)
 {
-	int	tmp;
-	int	swapped;
-	int	i;
-
-	tmp = 0;
-	swapped = 1;
-	while (swapped)
+	while (*s)
 	{
-		swapped = 0;
-		i = 0;
-		while (i < size - 1)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				tmp = tab[i];
-				tab[i] = tab[i + 1];
-				tab[i + 1] = tmp;
-				swapped = 1;
-			}
-			i++;
-		}
+		write(fd, s, 1);
+		++(*count);
+		s++;
 	}
 }

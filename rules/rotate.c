@@ -15,7 +15,6 @@
 void	rotate(t_stack *stack, char c, int *count)
 {
 	t_list	*tmp;
-	t_opp	opp;
 
 	if (!stack->head)
 		return ;
@@ -54,9 +53,6 @@ static void	rotate_both_stack(t_stack *stack)
 
 void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
-
 	if (!stack->head || !stack2->head)
 		return ;
 	rotate_both_stack(stack);

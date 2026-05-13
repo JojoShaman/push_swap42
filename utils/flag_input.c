@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   update_median.c                                   :+:      :+:    :+:    */
+/*   flag_input.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/11 08:47:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/12 23:20:38 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/01 18:53:42 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/13 18:03:06 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-#include <stddef.h>
 
-void	update_median(t_stack *stack)
+int	check_flag(char *str, t_bool *flags)
 {
-	size_t	size;
-	t_list	*track;
-
-	size = stack_size(stack);
-	track = stack->head;
-	while (track)
-	{
-		if ((size_t)(track->current_position) <= size / 2)
-			track->above_median = 1;
-		else
-			track->above_median = 0;
-		if (size > 3 && size % 2 == 1)
-		{
-			if (track->current_position == (size / 2) + 1)
-				track->above_median = 1;
-		}
-		track = track->next;
-	}
+	if (ft_strcmp(str, "--bench") == 0)
+		return (flags->bench_mode = 1);
+	if (ft_strcmp(str, "--adaptive") == 0)
+		return (flags->adaptive = 1);
+	else if (ft_strcmp(str, "--simple") == 0)
+		return (flags->simple = 1);
+	else if (ft_strcmp(str, "--medium") == 0)
+		return (flags->medium = 1);
+	else if (ft_strcmp(str, "--complex") == 0)
+		return (flags->complex = 1);
+	return (0);
 }
