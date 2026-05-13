@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/01 18:53:42 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 02:04:06 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/13 17:18:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_argv(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == '-' && str[i - 1] == '-')
+		if (str[i] == '-' && i > 0 && str[i - 1] == '-')
 			return (0);
 		if (!is_valid(str[i]))
 			return (0);
@@ -62,6 +62,21 @@ int	check_flag(char *str, t_bool *flags)
 		flags->complex = 1;
 		return (1);
 	}
+	return (0);
+}
+
+int	is_flag(char *str)
+{
+	if (ft_strcmp(str, "--bench") == 0)
+		return (1);
+	if (ft_strcmp(str, "--adaptive") == 0)
+		return (1);
+	if (ft_strcmp(str, "--simple") == 0)
+		return (1);
+	if (ft_strcmp(str, "--medium") == 0)
+		return (1);
+	if (ft_strcmp(str, "--complex") == 0)
+		return (1);
 	return (0);
 }
 

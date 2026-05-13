@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   process_input.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/07 22:29:32 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/12 23:59:14 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   process_input.c                                   :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/13 17:18:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int	check_int_limits_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (is_flag(argv[i]))
+		{
+			i++;
+			continue ;
+		}
 		nb_i = ft_atol(argv[i]);
 		if (nb_i < INT_MIN || nb_i > INT_MAX)
 			return (0);
@@ -48,10 +53,20 @@ int	check_duplicate_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (is_flag(argv[i]))
+		{
+			i++;
+			continue ;
+		}
 		j = i + 1;
 		nb_i = ft_atoi(argv[i]);
 		while (j < argc)
 		{
+			if (is_flag(argv[j]))
+			{
+				j++;
+				continue ;
+			}
 			if (nb_i == ft_atoi(argv[j]))
 				return (0);
 			j++;

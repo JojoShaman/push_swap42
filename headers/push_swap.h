@@ -6,11 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-<<<<<<< HEAD
-/*   Updated: 2026/05/11 12:17:51 by srosu           ###   ########.fr        */
-=======
-/*   Updated: 2026/05/13 16:55:26 by srosu           ###   ########.fr        */
->>>>>>> feat/medium_sort_2
+/*   Updated: 2026/05/13 17:18:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +36,9 @@ typedef struct s_bool
 {
 	int	bench_mode;
 	int	adaptive;
+	int	simple;
+	int	medium;
+	int	complex;
 }	t_bool;
 
 typedef struct s_strat
@@ -118,12 +117,13 @@ size_t	stack_size(t_stack *stack);
 void	update_median(t_stack *stack);
 void	update_position(t_stack *stack);
 void	find_target_node(t_stack *a, t_stack *b);
-void	sort_three(t_stack *a, int *count);
+void	sort_three(t_stack *stack, char c, int *count);
 
 /* process input */
 int		is_valid(int c);
 int		check_argv(char *str);
 int		error(int fd);
+int		is_flag(char *str);
 int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);

@@ -6,11 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/11 11:26:40 by srosu            #+#    #+#              */
-<<<<<<< HEAD
-/*   Updated: 2026/05/13 16:50:54 by srosu           ###   ########.fr        */
-=======
-/*   Updated: 2026/05/13 01:46:18 by srosu           ###   ########.fr        */
->>>>>>> 435525b (needs some cleaning but medium sort works, also added simple, medium and complex flags)
+/*   Updated: 2026/05/13 17:06:56 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
