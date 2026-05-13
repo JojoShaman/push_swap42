@@ -1,22 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-<<<<<<< HEAD
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/13 00:03:19 by mbuchet          ###   ########.fr       */
-=======
 /*                                                       :::      ::::::::    */
 /*   push_swap.h                                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/11 12:17:51 by srosu           ###   ########.fr        */
->>>>>>> 6c01fc1 (add object)
+/*   Updated: 2026/05/13 16:55:26 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +98,7 @@ void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count);
 void	radix_sort(t_stack *a, t_stack *b, int *count);
 void	simple_sort(t_stack *a, t_stack *b, int *count);
 void	sort_array(int *tab, int size);
-void    medium_sort(t_stack *a, t_stack *b, int *count);
+void	medium_sort(t_stack *a, t_stack *b, int *count);
 
 /* algoritm utils */
 t_list	*find_biggest(t_stack *stack);

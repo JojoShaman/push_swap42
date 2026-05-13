@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/11 12:15:15 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/12 21:34:22 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	sort_four(t_stack *a, t_stack *b, int *count)
 		rotate(a, 'a', count);
 	push(b, a, 'b', count);
 	(*count)++;
-	sort_three(a, count);
+	sort_three(a, 'a', count);
 	push(a, b, 'a', count);
 }
 
@@ -41,7 +41,7 @@ static void	sort_five(t_stack *a, t_stack *b, int *count)
 	}
 	if (b->head->value < b->head->next->value)
 		swap(b, 'b', count);
-	sort_three(a, count);
+	sort_three(a, 'a', count);
 	while (i--)
 		push(a, b, 'a', count);
 }
@@ -65,7 +65,7 @@ void	simple_sort(t_stack *a, t_stack *b, int *count)
 		return ;
 	}
 	if (size == 3)
-		return (sort_three(a, count));
+		return (sort_three(a, 'a', count));
 	else if (size == 4)
 		return (sort_four(a, b, count));
 	else if (size == 5)
