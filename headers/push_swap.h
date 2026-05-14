@@ -86,6 +86,8 @@ typedef struct s_data
 	t_strat	big_o;
 }	t_data;
 
+
+int		count_flag(char **argv, t_bool *flags);
 /* stack init */
 t_data	*create_stack_a(const char *str);
 t_list	*new_node(int content);

@@ -79,7 +79,7 @@ char	*process_argv(int argc, char **argv, t_bool *flags)
 
 	i = 1;
 	str = NULL;
-	while (i < argc)
+	while (i < argc + (count_flag(argv, flags)))
 	{
 		if (!check_flag(argv[i], flags))
 		{

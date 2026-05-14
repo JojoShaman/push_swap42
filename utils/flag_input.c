@@ -35,7 +35,6 @@ static int	reset(t_bool *flags, int strat)
 	return (0);
 }
 
-
 int	check_flag(char *str, t_bool *flags)
 {
 	if (ft_strcmp(str, "--bench") == 0)
