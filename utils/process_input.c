@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   process_input.c                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 11:21:04 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   process_input.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/07 22:29:32 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/14 21:53:10 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,54 @@ int	parse_single_arg(char **argv, int i, t_data **stack)
 	return (-1);
 }
 
-int	check_int_limits_args(int argc, char **argv, t_bool *flags)
+int	check_int_limits_args(char *str)
 {
-	int		i;
-	long	nb_i;
+	int		start;
+	char	*sub_str;
+	long	last_number;
 
-	i = 1;
-	while (i < argc)
+	start = 0;
+	while (str[start])
 	{
-		if (check_flag(argv[i], flags))
+		while (str[start] == ' ')
+			start++;
+		if (!str[start])
+			break ;
+		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		last_number = ft_atol(sub_str);
+		if (last_number < INT_MIN || last_number > INT_MAX)
 		{
-			i++;
-			continue ;
-		}
-		nb_i = ft_atol(argv[i]);
-		if (nb_i < INT_MIN || nb_i > INT_MAX)
+			free(str);
 			return (0);
-		i++;
+		}
+		free(sub_str);
+		start += word_len(str, start, ' ');
 	}
 	return (1);
 }
 
-int	check_duplicate_args(int argc, char **argv, t_bool *flags)
+int	check_duplicate_args(char *str)
 {
-	int		i;
-	int		j;
-	long	nb_i;
+	int		start;
+	char	*sub_str;
+	long	last_number;
 
-	i = 1;
-	while (i < argc)
+	start = 0;
+	while (str[start])
 	{
-		if (check_flag(argv[i], flags))
+		while (str[start] == ' ')
+			start++;
+		if (!str[start])
+			break ;
+		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		last_number = ft_atoi(sub_str);
+		start += word_len(str, start, ' ');
+		if (check_contain_number_in_pre_stack(str, start, last_number))
 		{
-			i++;
-			continue ;
+			free(str);
+			return (0);
 		}
-		j = i + 1;
-		nb_i = ft_atoi(argv[i]);
-		while (j < argc)
-		{
-			if (!check_flag(argv[j], flags) && nb_i == ft_atoi(argv[j]))
-				return (0);
-			j++;
-		}
-		i++;
+		free(sub_str);
 	}
 	return (1);
 }
@@ -79,7 +83,7 @@ char	*process_argv(int argc, char **argv, t_bool *flags)
 
 	i = 1;
 	str = NULL;
-	while (i < argc + (count_flag(argv, flags)))
+	while (i < (argc + count_flag(argv, flags)))
 	{
 		if (!check_flag(argv[i], flags))
 		{
@@ -88,7 +92,7 @@ char	*process_argv(int argc, char **argv, t_bool *flags)
 			tmp = str;
 			str = ft_strjoin(tmp, argv[i]);
 			free(tmp);
-			if (i != argc - 1)
+			if (i != argc + (count_flag(argv, flags) - 1))
 			{
 				tmp = str;
 				str = ft_strjoin(tmp, " ");

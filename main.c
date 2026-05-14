@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   main.c                                            :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 14:26:21 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:10:15 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/14 22:17:59 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
 
-static int	is_valid_2(int argc, char **argv, t_bool *flags)
+/*static int	is_valid_2(int argc, char **argv, t_bool *flags)
 {
 	int		i;
 	int		j;
@@ -37,12 +37,12 @@ static int	is_valid_2(int argc, char **argv, t_bool *flags)
 		i++;
 	}
 	return (1);
-}
+}*/
 
-int		count_flag(char **argv, t_bool *flags)
+int	count_flag(char **argv, t_bool *flags)
 {
-	int		i;
-	int		count_flag;
+	int	i;
+	int	count_flag;
 
 	i = 1;
 	count_flag = 0;
@@ -60,14 +60,14 @@ int	init_and_run(int argc, char **argv, t_data **stack, t_bool *flags)
 	char	*str;
 
 	str = NULL;
-	if (argc > 2 && (!is_valid_2(argc, argv, flags)))
-		return (error(2));
-	if (!check_int_limits_args(argc, argv, flags))
-		return (error(2));
-	if (!check_duplicate_args(argc, argv, flags))
-		return (error(2));
+	/*if (argc > 2 && (!is_valid_2(argc, argv, flags)))
+		return (error(2));*/
 	str = process_argv(argc, argv, flags);
 	if (!str)
+		return (error(2));
+	if (!check_int_limits_args(str))
+		return (error(2));
+	if (!check_duplicate_args(str))
 		return (error(2));
 	*stack = create_stack_a(str);
 	free(str);
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*stack;
 	int		temp_int;
-	t_bool flags;
+	t_bool	flags;
 	int		i;
 
 	i = 1;

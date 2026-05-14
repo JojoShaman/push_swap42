@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   push_swap.h                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 23:21:47 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/14 21:47:34 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ typedef struct s_data
 	t_strat	big_o;
 }	t_data;
 
-
 int		count_flag(char **argv, t_bool *flags);
 /* stack init */
 t_data	*create_stack_a(const char *str);
@@ -130,6 +129,7 @@ void	update_position(t_stack *stack);
 void	update_cost(t_stack *stack, t_stack *stack2);
 void	sort_three(t_stack *stack, char c, int *count);
 void	operations(t_stack *a, t_stack *b, t_list *cheapest, int *count);
+int		check_contain_number_in_pre_stack(char *str, int start, int number);
 
 /* process input */
 int		is_valid(int c);
@@ -138,8 +138,8 @@ int		error(int fd);
 int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
-int		check_duplicate_args(int argc, char **argv, t_bool *flags);
-int		check_int_limits_args(int argc, char **argv, t_bool *flags);
+int		check_int_limits_args(char *str);
+int		check_duplicate_args(char *str);
 
 /* libft */
 size_t	ft_strlen(const char *str);

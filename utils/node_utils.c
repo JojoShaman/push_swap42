@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   node_utils.c                                      :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:09:35 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 23:48:43 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   node_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:09:35 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/14 21:43:37 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,25 @@ void	ft_lstclear(t_stack *stack)
 	}
 	stack->head = NULL;
 	stack->tail = NULL;
+}
+
+int	check_contain_number_in_pre_stack(char *str, int start, int number)
+{
+	char	*sub_str;
+	long	number_l;
+
+	number_l = number;
+	while (str[start])
+	{
+		while (str[start] == ' ')
+			start++;
+		if (!str[start])
+			break ;
+		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		if (ft_atol(sub_str) == number_l)
+			return (1);
+		free(sub_str);
+		start += word_len(str, start, ' ');
+	}
+	return (0);
 }

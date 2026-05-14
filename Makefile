@@ -1,6 +1,6 @@
 NAME = push_swap
 PRINTF_LIB = printf/libftprintf.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iheaders
 PUSH_SWAP_SRCS 	=	sorting/medium_sort.c \
