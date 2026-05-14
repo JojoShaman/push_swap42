@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 12:43:49 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 14:24:36 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_valid_2(int argc, char **argv, t_bool *flags)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+			if (!((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '-'))
 				return (0);
 			j++;
 		}
