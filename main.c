@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 14:24:36 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 14:26:21 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_valid_2(int argc, char **argv, t_bool *flags)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 1;
 	while (i < argc)
@@ -44,7 +44,7 @@ int	init_and_run(int argc, char **argv, t_data **stack)
 
 	str = NULL;
 	ft_memset(&flags, 0, sizeof(t_bool));
-	if (!is_valid_2(argc, argv, &flags))
+	if (argc > 2 && (!is_valid_2(argc, argv, &flags)))
 		return (error(2));
 	if (!check_int_limits_args(argc, argv, &flags))
 		return (error(2));
