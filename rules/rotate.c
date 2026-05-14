@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/27 15:27:31 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/07 16:00:14 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 11:28:38 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,4 @@ void	rotate(t_stack *stack, char c, int *count)
 	else
 		stack->opp->rb++;
 	ft_printf(1, "r%c\n", c);
-}
-
-static void	rotate_both_stack(t_stack *stack)
-{
-	t_list	*tmp;
-
-	tmp = stack->head;
-	if (stack->head->next == NULL)
-		return ;
-	stack->head = stack->head->next;
-	stack->head->prev = NULL;
-	stack->tail->next = tmp;
-	tmp->prev = stack->tail;
-	stack->tail = tmp;
-	tmp->next = NULL;
-}
-
-void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
-{
-	if (!stack->head || !stack2->head)
-		return ;
-	rotate_both_stack(stack);
-	rotate_both_stack(stack2);
-	stack->opp->rr++;
-	(*count)++;
-	ft_printf(1, "rr\n");
 }

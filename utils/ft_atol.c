@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   reverse_rotate.c                                  :+:      :+:    :+:    */
+/*   ft_atol.c                                         :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 11:28:18 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/14 11:32:21 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/14 11:32:21 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	reverse_rotate(t_stack *stack, char c, int *count)
+long	ft_atol(const char *nptr)
 {
-	t_list	*tmp;
+	size_t	i;
+	int		sign;
+	long	nb;
 
-	if (!stack->head)
-		return ;
-	if (!stack->head->next)
-		return ;
-	tmp = stack->tail;
-	stack->tail = stack->tail->prev;
-	stack->tail->next = NULL;
-	stack->head->prev = tmp;
-	tmp->next = stack->head;
-	stack->head = tmp;
-	stack->head->prev = NULL;
-	(*count)++;
-	if (c == 'a')
-		stack->opp->rra++;
-	else
-		stack->opp->rrb++;
-	ft_printf(1, "rr%c\n", c);
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb *= 10;
+		nb += (nptr[i] - '0');
+		i++;
+	}
+	return (nb * sign);
 }

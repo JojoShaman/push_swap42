@@ -6,11 +6,11 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:09:39 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 17:58:26 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 11:35:22 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "../headers/push_swap.h"
 
 static int	create_node(t_stack *stack_a, char *substr, int i)
 {

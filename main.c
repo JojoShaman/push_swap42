@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   push_swap.c                                       :+:      :+:    :+:    */
+/*   main.c                                            :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 17:44:33 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 12:43:49 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
+
+static int	is_valid_2(int argc, char **argv, t_bool *flags)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (check_flag(argv[i], flags))
+		{
+			i++;
+			continue ;
+		}
+		j = 0;
+		while (argv[i][j])
+		{
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 int	init_and_run(int argc, char **argv, t_data **stack)
 {
@@ -19,9 +44,11 @@ int	init_and_run(int argc, char **argv, t_data **stack)
 
 	str = NULL;
 	ft_memset(&flags, 0, sizeof(t_bool));
-	if (check_int_limits_args(argc, argv, &flags) == 0)
+	if (!is_valid_2(argc, argv, &flags))
 		return (error(2));
-	if (check_duplicate_args(argc, argv, &flags) == 0)
+	if (!check_int_limits_args(argc, argv, &flags))
+		return (error(2));
+	if (!check_duplicate_args(argc, argv, &flags))
 		return (error(2));
 	str = process_argv(argc, argv, &flags);
 	if (!str)

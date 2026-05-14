@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   reverse_rotate.c                                  :+:      :+:    :+:    */
+/*   adapt_strategy.c                                  :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 11:28:18 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/07 22:32:07 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/14 11:43:27 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	reverse_rotate(t_stack *stack, char c, int *count)
+void	adapt_strategy(t_data *s, float disorder, int *count)
 {
-	t_list	*tmp;
-
-	if (!stack->head)
-		return ;
-	if (!stack->head->next)
-		return ;
-	tmp = stack->tail;
-	stack->tail = stack->tail->prev;
-	stack->tail->next = NULL;
-	stack->head->prev = tmp;
-	tmp->next = stack->head;
-	stack->head = tmp;
-	stack->head->prev = NULL;
-	(*count)++;
-	if (c == 'a')
-		stack->opp->rra++;
+	if (disorder < 0.2)
+	{
+		simple_sort(&s->stack_a, &s->stack_b, count);
+		s->big_o.strategy = "O\033[3m(n^2)\033[0m";
+	}
+	else if (disorder < 0.5)
+	{
+		medium_sort(&s->stack_a, &s->stack_b, count);
+		s->big_o.strategy = "O\033[3m(n√n)\033[0m";
+	}
 	else
-		stack->opp->rrb++;
-	ft_printf(1, "rr%c\n", c);
+	{
+		radix_sort(&s->stack_a, &s->stack_b, count);
+		s->big_o.strategy = "O\033[3m(n log n)\033[0m";
+	}
 }

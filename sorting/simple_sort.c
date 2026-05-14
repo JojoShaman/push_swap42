@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/06 00:41:07 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 17:36:11 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 10:55:19 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	small_sort(t_stack *a, t_stack *b, int *count)
 			swap(a, 'a', count);
 		return ;
 	}
-	if (size == 3)
+	else if (size == 3)
 		return (sort_three(a, 'a', count));
 	else if (size == 4)
 		return (sort_four(a, b, count));

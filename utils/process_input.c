@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/13 18:11:21 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/14 11:21:04 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ int	check_duplicate_args(int argc, char **argv, t_bool *flags)
 	i = 1;
 	while (i < argc)
 	{
-		if (check_flag(argv[i++], flags))
+		if (check_flag(argv[i], flags))
+		{
+			i++;
 			continue ;
+		}
 		j = i + 1;
 		nb_i = ft_atoi(argv[i]);
 		while (j < argc)
 		{
-			if (check_flag(argv[j++], flags))
-				continue ;
-			if (nb_i == ft_atoi(argv[j]))
+			if (!check_flag(argv[j], flags) && nb_i == ft_atoi(argv[j]))
 				return (0);
 			j++;
 		}

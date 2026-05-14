@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   reverse_rotate.c                                  :+:      :+:    :+:    */
+/*   rotate_both.c                                     :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/27 15:27:51 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/14 11:28:18 by srosu           ###   ########.fr        */
+/*   Created: 2026/05/14 11:28:50 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/14 11:28:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	reverse_rotate(t_stack *stack, char c, int *count)
+static void	rotate_both_stack(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (!stack->head)
+	tmp = stack->head;
+	if (stack->head->next == NULL)
 		return ;
-	if (!stack->head->next)
-		return ;
-	tmp = stack->tail;
-	stack->tail = stack->tail->prev;
-	stack->tail->next = NULL;
-	stack->head->prev = tmp;
-	tmp->next = stack->head;
-	stack->head = tmp;
+	stack->head = stack->head->next;
 	stack->head->prev = NULL;
+	stack->tail->next = tmp;
+	tmp->prev = stack->tail;
+	stack->tail = tmp;
+	tmp->next = NULL;
+}
+
+void	rotate_both(t_stack *stack, t_stack *stack2, int *count)
+{
+	if (!stack->head || !stack2->head)
+		return ;
+	rotate_both_stack(stack);
+	rotate_both_stack(stack2);
+	stack->opp->rr++;
 	(*count)++;
-	if (c == 'a')
-		stack->opp->rra++;
-	else
-		stack->opp->rrb++;
-	ft_printf(1, "rr%c\n", c);
+	ft_printf(1, "rr\n");
 }
