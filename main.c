@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/15 16:22:34 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/15 16:52:57 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	init_and_run(int argc, char **argv, t_data **stack, t_bool *flags)
 	str = process_argv(argc, argv, flags);
 	if (!str)
 		return (error_with_free_str(2, str));
-	if (argc > 2 && !is_valid_soustraction(str))
+	if (!is_valid_soustraction(str))
 		return (error_with_free_str(2, str));
 	if (!check_int_limits_args(str))
 		return (error_with_free_str(2, str));
