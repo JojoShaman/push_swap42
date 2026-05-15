@@ -6,7 +6,7 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/14 21:47:34 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/15 03:29:29 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,10 @@ int		check_contain_number_in_pre_stack(char *str, int start, int number);
 
 /* process input */
 int		is_valid(int c);
+int		is_argv_is_valid(int argc, char **argv, t_bool *flags);
 int		check_argv(char *str);
 int		error(int fd);
+int		error_with_free_str(int fd, char *str);
 int		check_flag(char *str, t_bool *flags);
 int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
