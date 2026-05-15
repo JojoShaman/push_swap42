@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/15 15:21:09 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/15 16:22:34 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ int	main(int argc, char **argv)
 {
 	t_data	*stack;
 	t_bool	flags;
-	int		temp_int;
-	int		i;
+
+	// int		temp_int;
+	int	i;
 
 	i = 1;
 	ft_memset(&flags, 0, sizeof(t_bool));
@@ -92,13 +93,5 @@ int	main(int argc, char **argv)
 	argc -= count_flag(argv, &flags);
 	if (argc < 2)
 		return (error(2));
-	if (argc == 2)
-	{
-		if (ft_strlen(argv[1]) == 1 && argv[1][0] == '-')
-			return (error(2));
-		temp_int = parse_single_arg(argv, i, &stack);
-		if (temp_int != -1)
-			return (temp_int);
-	}
 	return (init_and_run(argc, argv, &stack, &flags));
 }

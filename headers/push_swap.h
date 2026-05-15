@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:10:17 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/15 03:29:29 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   push_swap.h                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/15 16:23:36 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_data
 	t_strat	big_o;
 }	t_data;
 
-int		count_flag(char **argv, t_bool *flags);
+int	count_flag(char **argv, t_bool *flags);
 /* stack init */
 t_data	*create_stack_a(const char *str);
 t_list	*new_node(int content);
@@ -138,7 +138,6 @@ int		check_argv(char *str);
 int		error(int fd);
 int		error_with_free_str(int fd, char *str);
 int		check_flag(char *str, t_bool *flags);
-int		parse_single_arg(char **argv, int i, t_data **stack);
 char	*process_argv(int argc, char **argv, t_bool *flags);
 int		check_int_limits_args(char *str);
 int		check_duplicate_args(char *str);

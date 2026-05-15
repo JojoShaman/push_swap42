@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   process_input.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/07 22:29:32 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/14 21:53:10 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   process_input.c                                   :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/15 16:22:26 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-
-int	parse_single_arg(char **argv, int i, t_data **stack)
-{
-	if (!check_argv(argv[i]))
-		return (error(2));
-	if (count_nb(argv[i]) > 1)
-		*stack = create_stack_a(argv[i]);
-	else
-		return (error(2));
-	return (-1);
-}
 
 int	check_int_limits_args(char *str)
 {
