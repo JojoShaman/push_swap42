@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:10:15 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/15 03:54:05 by mbuchet          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   main.c                                            :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
+/*   Updated: 2026/05/15 15:21:09 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	init_and_run(int argc, char **argv, t_data **stack, t_bool *flags)
 	if (is_argv_is_valid(argc, argv, flags) == 0)
 		return (error(2));
 	str = process_argv(argc, argv, flags);
-	if (argc > 2 && !is_valid_soustraction(str))
-		return (error_with_free_str(2, str));
 	if (!str)
+		return (error_with_free_str(2, str));
+	if (argc > 2 && !is_valid_soustraction(str))
 		return (error_with_free_str(2, str));
 	if (!check_int_limits_args(str))
 		return (error_with_free_str(2, str));
@@ -71,7 +71,6 @@ int	init_and_run(int argc, char **argv, t_data **stack, t_bool *flags)
 	free(str);
 	if (!*stack)
 		return (1);
-	count_flag(argv, flags);
 	(*stack)->flags = *flags;
 	run_sort(&(*stack)->stack_a, &(*stack)->stack_b, *stack);
 	return (0);
@@ -80,17 +79,19 @@ int	init_and_run(int argc, char **argv, t_data **stack, t_bool *flags)
 int	main(int argc, char **argv)
 {
 	t_data	*stack;
-	int		temp_int;
 	t_bool	flags;
+	int		temp_int;
 	int		i;
 
 	i = 1;
 	ft_memset(&flags, 0, sizeof(t_bool));
 	if (argc < 2)
 		return (error(2));
-	argc -= count_flag(argv, &flags);
-	while (check_flag(argv[i], &flags))
+	while (argv[i] && check_flag(argv[i], &flags))
 		i++;
+	argc -= count_flag(argv, &flags);
+	if (argc < 2)
+		return (error(2));
 	if (argc == 2)
 	{
 		if (ft_strlen(argv[1]) == 1 && argv[1][0] == '-')
