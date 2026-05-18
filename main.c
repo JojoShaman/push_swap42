@@ -22,7 +22,7 @@ static int	is_valid_soustraction(char *str)
 		if (str[i] == '-')
 		{
 			if (i > 0 && str[i - 1] >= '0' && str[i - 1] <= '9')
-			 	return (0);
+				return (0);
 			if (!str[i + 1])
 				return (0);
 			if (str[i + 1] && (str[i + 1] == ' ' || str[i + 1] == '-'))
