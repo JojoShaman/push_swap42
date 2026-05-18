@@ -6,7 +6,7 @@
 /*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:10:15 by srosu             #+#    #+#             */
-/*   Updated: 2026/05/18 14:22:14 by mbuchet          ###   ########.fr       */
+/*   Updated: 2026/05/18 17:28:57 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ int	main(int argc, char **argv)
 	while (argv[i] && check_flag(argv[i], &flags))
 		i++;
 	argc -= count_flag(argv, &flags);
+	if (argc == 1)
+		return (1);
 	return (init_and_run(argc, argv, &stack, &flags));
 }
