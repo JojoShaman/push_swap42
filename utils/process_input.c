@@ -26,10 +26,12 @@ int	check_int_limits_args(char *str)
 		if (!str[start])
 			break ;
 		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		if (!sub_str)
+			return (0);
 		last_number = ft_atol(sub_str);
 		if (last_number < INT_MIN || last_number > INT_MAX)
 		{
-			free(str);
+			free(sub_str);
 			return (0);
 		}
 		free(sub_str);
@@ -52,11 +54,13 @@ int	check_duplicate_args(char *str)
 		if (!str[start])
 			break ;
 		sub_str = ft_substr(str, start, word_len(str, start, ' '));
+		if (!sub_str)
+			return (0);
 		last_number = ft_atoi(sub_str);
 		start += word_len(str, start, ' ');
 		if (check_contain_number_in_pre_stack(str, start, last_number))
 		{
-			free(str);
+			free(sub_str);
 			return (0);
 		}
 		free(sub_str);
@@ -77,7 +81,10 @@ char	*process_argv(int argc, char **argv, t_bool *flags)
 		if (!check_flag(argv[i], flags))
 		{
 			if (!check_argv(argv[i]))
-				return (free(str), NULL);
+			{
+				free(str);
+				return (NULL);
+			}
 			tmp = str;
 			str = ft_strjoin(tmp, argv[i]);
 			free(tmp);

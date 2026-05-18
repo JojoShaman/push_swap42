@@ -21,6 +21,8 @@ static int	is_valid_soustraction(char *str)
 	{
 		if (str[i] == '-')
 		{
+			if (str[i - 1] && str[i - 1] != '-')
+				return (0);
 			if (!str[i + 1])
 				return (0);
 			if (str[i + 1] && (str[i + 1] == ' ' || str[i + 1] == '-'))
@@ -80,9 +82,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*stack;
 	t_bool	flags;
-
-	// int		temp_int;
-	int	i;
+	int		i;
 
 	i = 1;
 	ft_memset(&flags, 0, sizeof(t_bool));

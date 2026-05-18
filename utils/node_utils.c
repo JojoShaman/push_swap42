@@ -67,8 +67,13 @@ int	check_contain_number_in_pre_stack(char *str, int start, int number)
 		if (!str[start])
 			break ;
 		sub_str = ft_substr(str, start, word_len(str, start, ' '));
-		if (ft_atol(sub_str) == number_l)
+		if (!sub_str)
 			return (1);
+		if (ft_atol(sub_str) == number_l)
+		{
+			free(sub_str);
+			return (1);
+		}
 		free(sub_str);
 		start += word_len(str, start, ' ');
 	}

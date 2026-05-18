@@ -6,7 +6,7 @@
 /*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/21 14:10:17 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/15 16:23:36 by srosu           ###   ########.fr        */
+/*   Updated: 2026/05/18 09:33:50 by srosu           ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,69 +86,69 @@ typedef struct s_data
 	t_strat	big_o;
 }	t_data;
 
-int	count_flag(char **argv, t_bool *flags);
+int			count_flag(char **argv, t_bool *flags);
 /* stack init */
-t_data	*create_stack_a(const char *str);
-t_list	*new_node(int content);
-void	link_node(t_list *node, t_list *node2);
-int		count_nb(const char *str);
+t_data		*create_stack_a(const char *str);
+t_list		*new_node(int content);
+void		link_node(t_list *node, t_list *node2);
+int			count_nb(const char *str);
 
 /* stack handlers */
-void	run_sort(t_stack *a, t_stack *b, t_data *stacks);
-void	adapt_strategy(t_data *s, float disorder, int *count);
+void		run_sort(t_stack *a, t_stack *b, t_data *stacks);
+void		adapt_strategy(t_data *s, float disorder, int *count);
 
 /* rules */
-void	swap(t_stack *stack, char c, int *count);
-void	push(t_stack *dst, t_stack *src, char c, int *count);
-void	rotate(t_stack *stack, char c, int *count);
-void	rotate_both(t_stack *stack, t_stack *stack2, int *count);
-void	reverse_rotate(t_stack *stack, char c, int *count);
-void	reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count);
+void		swap(t_stack *stack, char c, int *count);
+void		push(t_stack *dst, t_stack *src, char c, int *count);
+void		rotate(t_stack *stack, char c, int *count);
+void		rotate_both(t_stack *stack, t_stack *stack2, int *count);
+void		reverse_rotate(t_stack *stack, char c, int *count);
+void		reverse_rotate_both(t_stack *stack, t_stack *stack2, int *count);
 
 /* algoritms */
-void	radix_sort(t_stack *a, t_stack *b, int *count);
-void	simple_sort(t_stack *a, t_stack *b, int *count);
-void	sort_array(int *tab, int size);
-void	medium_sort(t_stack *a, t_stack *b, int *count);
+void		radix_sort(t_stack *a, t_stack *b, int *count);
+void		simple_sort(t_stack *a, t_stack *b, int *count);
+void		sort_array(int *tab, int size);
+void		medium_sort(t_stack *a, t_stack *b, int *count);
 
 /* algoritm utils */
-t_list	*find_biggest(t_stack *stack);
-t_list	*find_smallest(t_stack *stack);
-t_list	*find_cheapest(t_stack *stack, int smallest, int biggest);
-void	find_target_node(t_stack *a, t_stack *b);
-int		bits_count(int max);
-float	compute_disorder(t_stack *stack);
-int		*copy_into_array(t_stack *a);
-void	replace_value(int *tab, t_stack *a, int size);
-void	print_bench(t_data stack, int count, int whole, int frac);
-int		ft_strcmp(const char *s1, const char *s2);
-void	*ft_memset(void *b, int c, size_t len);
-size_t	stack_size(t_stack *stack);
-void	update_median(t_stack *stack);
-void	update_position(t_stack *stack);
-void	update_cost(t_stack *stack, t_stack *stack2);
-void	sort_three(t_stack *stack, char c, int *count);
-void	operations(t_stack *a, t_stack *b, t_list *cheapest, int *count);
-int		check_contain_number_in_pre_stack(char *str, int start, int number);
+t_list		*find_biggest(t_stack *stack);
+t_list		*find_smallest(t_stack *stack);
+t_list		*find_cheapest(t_stack *stack, int smallest, int biggest);
+void		find_target_node(t_stack *a, t_stack *b);
+int			bits_count(int max);
+float		compute_disorder(t_stack *stack);
+int			*copy_into_array(t_stack *a);
+void		replace_value(int *tab, t_stack *a, int size);
+void		print_bench(t_data stack, int count, int whole, int frac);
+int			ft_strcmp(const char *s1, const char *s2);
+void		*ft_memset(void *b, int c, size_t len);
+size_t		stack_size(t_stack *stack);
+void		update_median(t_stack *stack);
+void		update_position(t_stack *stack);
+void		update_cost(t_stack *stack, t_stack *stack2);
+void		sort_three(t_stack *stack, char c, int *count);
+void		operations(t_stack *a, t_stack *b, t_list *cheapest, int *count);
+int			check_contain_number_in_pre_stack(char *str, int start, int number);
 
 /* process input */
-int		is_valid(int c);
-int		is_argv_is_valid(int argc, char **argv, t_bool *flags);
-int		check_argv(char *str);
-int		error(int fd);
-int		error_with_free_str(int fd, char *str);
-int		check_flag(char *str, t_bool *flags);
-char	*process_argv(int argc, char **argv, t_bool *flags);
-int		check_int_limits_args(char *str);
-int		check_duplicate_args(char *str);
+int			is_valid(int c);
+int			is_argv_is_valid(int argc, char **argv, t_bool *flags);
+int			check_argv(char *str);
+int			error(int fd);
+int			error_with_free_str(int fd, char *str);
+int			check_flag(char *str, t_bool *flags);
+char		*process_argv(int argc, char **argv, t_bool *flags);
+int			check_int_limits_args(char *str);
+int			check_duplicate_args(char *str);
 
 /* libft */
-size_t	ft_strlen(const char *str);
-int		ft_atoi(const char *nptr);
-long	ft_atol(const char *nptr);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_lstclear(t_stack *stack);
-char	*ft_strjoin(char *dst, const char *src);
-int		word_len(char const *s, int start, char c);
+size_t		ft_strlen(const char *str);
+int			ft_atoi(const char *nptr);
+long		ft_atol(const char *nptr);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+void		ft_lstclear(t_stack *stack);
+char		*ft_strjoin(char *dst, const char *src);
+int			word_len(char const *s, int start, char c);
 
 #endif

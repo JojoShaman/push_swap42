@@ -21,9 +21,6 @@ int	error(int fd)
 int	error_with_free_str(int fd, char *str)
 {
 	if (str != NULL)
-	{
-		str = NULL;
 		free(str);
-	}
 	return (error(fd));
 }
