@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   process_input.c                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/07 22:29:32 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/15 16:22:26 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   process_input.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/07 22:29:32 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/18 10:18:06 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,19 @@ int	check_duplicate_args(char *str)
 	return (1);
 }
 
+static void	process_str_join(char **s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = *s1;
+	*s1 = ft_strjoin(tmp, s2);
+	free(tmp);
+}
+
 char	*process_argv(int argc, char **argv, t_bool *flags)
 {
 	int		i;
 	char	*str;
-	char	*tmp;
 
 	i = 1;
 	str = NULL;
@@ -85,15 +93,9 @@ char	*process_argv(int argc, char **argv, t_bool *flags)
 				free(str);
 				return (NULL);
 			}
-			tmp = str;
-			str = ft_strjoin(tmp, argv[i]);
-			free(tmp);
+			process_str_join(&str, argv[i]);
 			if (i != argc + (count_flag(argv, flags) - 1))
-			{
-				tmp = str;
-				str = ft_strjoin(tmp, " ");
-				free(tmp);
-			}
+				process_str_join(&str, " ");
 		}
 		i++;
 	}
