@@ -10,6 +10,16 @@ What makes this implementation distinctive is its **adaptive strategy**: rather 
 
 The project is implemented in C and relies on a **doubly linked list** as the underlying data structure, which makes stack operations (push, rotate, reverse rotate) natural and efficient. A custom `ft_printf` — adapted from a prior 42 project — is embedded directly and extended to support a file descriptor parameter, enabling clean output routing: operations to `stdout`, errors and bench stats to `stderr`.
 
+## Contributors
+
+### srosu
+srosu established the foundations of the project. He designed and implemented the core architecture: the doubly linked list data structure, the full set of stack operations (push, rotate, reverse rotate and their variants), and all three sorting algorithms — simple, medium (Turkish/chunk sort), and radix sort. He also designed the disorder metric and the adaptive strategy that selects the most appropriate algorithm based on the input. In short, srosu built the engine that makes push_swap work.
+
+### mbuchet
+mbuchet joined the project approximately one and a half weeks in and took ownership of several key areas. He contributed to the argument parsing and input validation logic, collaborated with srosu on identifying and fixing bugs throughout the codebase, and led the effort to restructure and reorganise the project for better readability and maintainability. He also refactored portions of the code to comply with the 42 Norm (norminette), ensuring the entire codebase passes style validation. His work made the project cleaner, more robust and improved the readability of the code.
+
+Both contributors are able to explain and defend any part of the code.
+
 ## Instructions
 
 ### Compilation
@@ -26,7 +36,6 @@ Other Makefile rules:
 make clean    # remove object files
 make fclean   # remove object files and binary
 make re       # full recompile
-make bonus    # build the checker binary
 ```
 
 ### Usage
