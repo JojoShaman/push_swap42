@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   main.c                                            :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: srosu <srosu@student.42belgium.be>        #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/04/21 14:10:15 by srosu            #+#    #+#              */
-/*   Updated: 2026/05/15 16:52:57 by srosu           ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbuchet <mbuchet@student.42belgium.be>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 14:10:15 by srosu             #+#    #+#             */
+/*   Updated: 2026/05/18 14:22:14 by mbuchet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,10 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	ft_memset(&flags, 0, sizeof(t_bool));
-	if (argc < 2)
-		return (error(2));
+	if (argc == 1)
+		return (1);
 	while (argv[i] && check_flag(argv[i], &flags))
 		i++;
 	argc -= count_flag(argv, &flags);
-	if (argc < 2)
-		return (error(2));
 	return (init_and_run(argc, argv, &stack, &flags));
 }
